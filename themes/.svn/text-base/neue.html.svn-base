@@ -1,0 +1,802 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!--
+Rubber Cement Theme 1.0 by Sleepover.
+Released under Creative Commons Attribution-Noncommercial-Share Alike 3.0 Unported License
+http://creativecommons.org/licenses/by-nc-sa/3.0/
+League Gothic by The League of Movable Type released under the Open Type License
+http://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&id=OFL
+
+ .|'''.|  '||                                                            
+ ||..  '   ||    ....    ....  ... ...    ...   .... ...   ....  ... ..  
+  ''|||.   ||  .|...|| .|...||  ||'  || .|  '|.  '|.  |  .|...||  ||' '' 
+.     '||  ||  ||      ||       ||    | ||   ||   '|.|   ||       ||     
+|'....|'  .||.  '|...'  '|...'  ||...'   '|..|'    '|     '|...' .||.    
+                                ||                                       
+                               ''''  sleepoversf.com
+-->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>{Title}{block:PostSummary} &bull; {PostSummary}{/block:PostSummary}</title>
+  {block:Description}<meta name="description" content="{MetaDescription}" />{/block:Description}
+  <meta name="color:Background" content="#96E4EF" />
+  <meta name="color:Text" content="#736653" />
+  <meta name="color:Links" content="#FFFFFF" />
+  <meta name="color:Accent" content="#FFFFFF" />
+  <meta name="if:Show RSS Link" content="1" />
+  <meta name="if:Show Archive Link" content="1" />
+  <meta name="if:Show Likes Link" content="1" />
+  <meta name="if:Show Notes" content="1" />
+  <meta name="if:White Audio Player" content="1" />
+  <meta name="text:Disqus Shortname" content="" />
+  <link rel="shortcut icon" href="{Favicon}" />
+  <link rel="alternate" type="application/rss+xml" href="{RSS}" />
+  <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+  <link rel="stylesheet" href="http://static.tumblr.com/usaykzx/o8Bku9w35/reset.css" type="text/css" />
+  <style>
+  
+    body {
+      color: {color:Text};
+      background: {color:Background} url(http://static.tumblr.com/usaykzx/n5aky459v/fletch.png);
+      font-family: Baskerville, "Times New Roman", Times, serif;
+    }
+      * html body { background: {color:Background}; }
+    
+    @font-face {
+      font-family: 'LeagueGothicRegular';
+      src: url('http://static.tumblr.com/usaykzx/xyTky45d1/league_gothic.eot');
+      src: local('League Gothic Regular'), local('LeagueGothic'),
+             url('http://static.tumblr.com/usaykzx/pheky45df/league_gothic.ttf') format('truetype');
+    }
+    
+    a:link,a:visited {
+      text-decoration: none;
+      color: {color:Links};
+    }
+    a:hover {
+      opacity: .9;
+    }
+    
+    .clear {
+      clear: both;
+    }
+    
+    hr {
+      border-bottom: 0;
+      border-top: 1px solid rgba(128,128,128,.5);
+      margin: 22px auto;
+      width: 243px;
+    }
+  
+    #container {
+      width: 772px;
+      margin: 0 auto;
+    }
+    
+    #header {
+      padding-top: 24px;
+    }
+    #header ul {
+      margin-bottom: 16px;
+      text-align: center;
+    }
+      #header li {
+        display: inline;
+        margin: 0 12px;
+        letter-spacing: .05em;
+        font-size: 24px;
+        font-family: "LeagueGothicRegular", "HelveticaNeue-CondensedBold", "Franklin Gothic Demi Cond", "Franklin Gothic Medium Cond", "Impact", sans-serif;
+        text-shadow: 0 0 1px {color:Background};
+      }
+    
+      h1 {
+        text-align: center;
+        font-size: 72px;
+        font-family: "LeagueGothicRegular", "HelveticaNeue-CondensedBold", "Franklin Gothic Demi Cond", "Franklin Gothic Medium Cond", "Impact", sans-serif;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+      }
+        
+      #header p {
+        width: 430px;
+        margin: 8px auto;
+        font-size: 22px;
+        text-align: center;
+        line-height: 1.09;
+        font-style: italic;
+        text-shadow: 0 0 1px {color:Background};
+      }
+  
+    .post-meta {
+      text-transform: uppercase;
+      color: rgba(128,128,128,.5);
+      text-align: center;
+      font-size: 14px;
+      font-weight: bold;
+      letter-spacing: 1px;
+      text-shadow: 0 0 1px {color:Background};
+    }  
+      .post-meta a {
+        margin: 0 6px;
+      }
+      
+    .post-content {
+      margin: 22px 0;
+    }
+    
+    .photo .photo-wrapper {
+      text-align: center;
+    }
+      .photo .photo-wrapper img {
+        border: 8px solid {color:Accent};
+        -webkit-box-shadow: 0 3px 3px rgba(128,128,128,.35);
+      }
+      .photo.captioned .photo-wrapper {
+        float: left;
+        margin: 0 22px 22px 0;
+      }
+      .photo .body {
+        padding-top: 4px;
+      }
+        .photo .body p, .photo .body blockquote {
+          text-align: left;
+        }
+      
+    .video .video-wrapper {
+      width: 500px;
+      margin: 0 auto;
+      text-align: center;
+      border: 8px solid {color:Text};
+      border-left: 0;
+      border-right: 0;
+      -webkit-box-shadow: 0 3px 3px rgba(128,128,128,.35);
+    }
+      .video.captioned .video-wrapper {
+        float: left;
+        margin: 0 22px 22px 8px;
+      }
+      .video .body {
+        padding-top: 4px;
+      }
+        .video .body p, .video .body blockquote {
+          text-align: left;
+        }
+  
+    .quote .q-wrapper {
+      width: 500px;
+      margin: 0 auto 22px;
+      background: {color:Accent};
+      padding: 8px;
+    }
+      .quote q {
+        border: 1px solid {color:Text};
+        padding: 7px 10px;
+        display: block;
+        font-family: "LeagueGothicRegular", "HelveticaNeue-CondensedBold", "Franklin Gothic Demi Cond", "Franklin Gothic Medium Cond", "Impact", sans-serif;
+        text-transform: uppercase;
+        text-shadow: 0 0 1px {color:Accent};
+        line-height: 1.1;
+        text-align: justify;
+      }
+        .quote p+p {
+          text-indent: 1em;
+        }
+        .quote q.short { font-size: 42px; }
+        .quote q.medium { font-size: 36px; }
+        .quote q.long { font-size: 30px; text-transform: none; }
+    .quote .body {
+      width: 430px;
+      margin: 0 auto;
+    }
+  
+    .text h2 {
+      width: 430px;
+      margin: 30px auto 16px;
+      text-align: center;
+      font-family: "LeagueGothicRegular", "HelveticaNeue-CondensedBold", "Franklin Gothic Demi Cond", "Franklin Gothic Medium Cond", "Impact", sans-serif;
+      font-size: 36px;
+    }
+    .text .body {
+      width: 430px;
+      margin: 0 auto;
+    }
+  
+    .audio-info {
+      width: 207px;
+      margin: 0 auto 22px;
+    }
+      .audio-info.hasart {
+        width: 368px;
+      }
+      .audio-info-left img {
+        width: 100px;
+        height: 100px;
+        -webkit-box-shadow: 0 2px 2px rgba(128,128,128,.35);
+      }
+      .audio-info-left {
+        width: 139px;
+        float: left;
+        background: url(http://static.tumblr.com/usaykzx/j6Kky45bc/vinyl.png) no-repeat right center;
+      }
+      .audio-info-right {
+        width: 207px;
+        float: right;
+        font-size: 18px;
+      }
+        .audio-info-right div {
+          margin: 0 0 5px;
+        }
+        .audio-trackname {
+          font-style: italic;
+        }
+        .audio-album {
+          text-transform: uppercase;
+          font-size: 14px;
+          letter-spacing: 2px;
+        }
+        .audio-info-right .audio-player {
+          margin-top: 12px;
+        }
+        
+    .audio .body {
+      width: 430px;
+      margin: 0 auto;
+    }
+  
+    .conversation h2 {
+      width: 430px;
+      margin: 30px auto 16px;
+      text-align: center;
+      font-family: "LeagueGothicRegular", "HelveticaNeue-CondensedBold", "Franklin Gothic Demi Cond", "Franklin Gothic Medium Cond", "Impact", sans-serif;
+      font-size: 36px;
+    }
+    .conversation table {
+      -webkit-border-radius: 10px;
+      -moz-border-radius: 10px;
+      border-radius: 10px;
+      background: {color:Accent};
+      width: 430px;
+      margin: 0 auto;
+    }
+      .conversation th {
+        padding: 9px 0 9px 11px;
+        border-top: 1px solid {color:Background};
+        text-align: right;
+        text-transform: uppercase;
+        font-size: 12px;
+        font-weight: bold;
+        line-height: 1.2;
+      }
+      .conversation td {
+        padding: 9px;
+        border-top: 1px solid {color:Background};
+        font-size: 16px;
+        line-height: 1.2;
+      }
+        .conversation tr:first-child td,
+        .conversation tr:first-child th {
+          border-top: 0;
+        }
+  
+    .link h2 a {
+      color: {color:Text};
+      text-align: center;
+      font-size: 24px;
+      font-family: "LeagueGothicRegular", "HelveticaNeue-CondensedBold", "Franklin Gothic Demi Cond", "Franklin Gothic Medium Cond", "Impact", sans-serif;
+      text-shadow: 0 0 1px {color:Accent};
+      letter-spacing: 1px;
+      background: {color:Accent};
+      display: block;
+      padding: 5px 0 5px;
+      margin: 30px auto 22px;
+      width: 430px;
+    }
+      .link h2 a span {
+        display: block;
+        padding: 8px;
+        border: 1px solid {color:Background};
+        border-left: 0;
+        border-right: 0;
+      }
+  
+    .link .body {
+      width: 430px;
+      margin: 0 auto;
+    }
+  
+    .answer {
+      width: 465px;
+      padding-right: 35px;
+      margin: 0 auto;
+    }
+      .answer-question .body {
+        -webkit-border-radius: 10px;
+        -moz-border-radius: 10px;
+        border-radius: 10px;
+        background: {color:Accent};
+        padding: 10px 16px;
+        width: 318px;
+        float: left;
+        line-height: 1.4;
+      }
+        .answer-asker {
+          float: right;
+          width: 80px;
+        }
+        .answer-point {
+          width: .7em;
+          float: left;
+          padding-top: 16px;
+        }
+        .answer-point-top,
+        .answer-point-bottom {
+          width: 0;
+          height: 0;
+        }
+        .answer-point-top {
+          border-bottom: 8px solid {color:Accent};
+          border-right: 8px solid rgba(0,0,0,0);
+        }
+        .answer-point-bottom {
+          border-left: 8px solid {color:Accent};
+          border-bottom: 8px solid rgba(0,0,0,0);
+        }
+        .answer-asker .answer-asker-avatar {
+          float: right;
+          -webkit-border-radius: 10px;
+          -moz-border-radius: 10px;
+          border-radius: 10px;
+          width: 64px;
+          height: 64px;
+          display: block;
+          text-indent: -9000px;
+          background-repeat: no-repeat;
+          background-position: top left;
+        }
+          .answer-asker .answer-asker-avatar a {
+            display: block;
+            text-indent: -9000px;
+            width: 64px;
+            height: 64px;
+          }
+      .answer-answer {
+        margin-top: 22px;
+      }
+        .answer-label {
+          width: 35px;
+          float: left;
+          color: {color:Accent};
+          font-family: "LeagueGothicRegular", "HelveticaNeue-CondensedBold", "Franklin Gothic Demi Cond", "Franklin Gothic Medium Cond", "Impact", sans-serif;
+          font-size: 48px;
+          overflow: hidden;
+        }
+        .answer-answer .body {
+          margin-left: 35px;
+        }
+  
+    .body {
+      font-size: 16px;
+    }
+    .body em {
+      font-style: italic;
+    }
+    .body strong {
+      font-weight: bold;
+    }
+    .body p,.body blockquote {
+      line-height: 1.3;
+      text-align: justify;
+    }
+    .body p {
+      text-indent: 1em;
+    }
+    .body ul+p,
+    .body ol+p,
+    .body blockquote+p,
+    .body p:first-of-type {
+      text-indent: 0;
+    }
+    .body ul,.body ol {
+      margin: .75em 2em;
+    }
+      .body li {
+        line-height: 1.2;
+        margin: .35em 0;
+        list-style-position: inside;
+      }
+      .body ol li {
+        list-style-type: decimal;
+      }
+      .body ul li {
+        list-style-type: circle;
+      }
+      .body ol ol,.body ul ul {
+        margin: .75em 2em;
+      }
+      .body li ol li {
+        list-style-type: lower-alpha;
+      }
+      .body li ul li {
+        list-style-type: circle;
+      }
+    .body blockquote {
+      padding: 0 .85em 0 .85em;
+      margin: .75em 1.15em;
+      border-left: 1px solid rgba(128,128,128,.5);
+      font-style: italic;
+    }
+  
+    .post-notes {
+      width: 430px;
+      margin: 0 auto 40px;
+    }
+      .post-notes li {
+        border-top: 1px solid rgba(128,128,128,.5);
+        padding: 6px 5px 7px;
+        font-size: 16px;
+      }
+      .post-notes .avatar {
+        display: none;
+      }
+      .post-notes blockquote {
+        padding: 0 1em 0 .45em;
+        margin: 7px 6px 0;
+        border-left: 1px solid rgba(128,128,128,.5);
+      }
+        .post-notes blockquote a {
+          color: {color:Text};
+        }
+        
+    #disqus_thread {
+      width: 430px;
+      margin: 0 auto 40px;
+    }
+  
+    #footer {
+      padding-bottom: 40px;
+    }
+  
+    #navigation {
+      width: 500px;
+      margin: 0 auto;
+      border: 1px solid rgba(128,128,128,.5);
+      border-left: 0;
+      border-right: 0;
+      height: 25px;
+      padding: 16px 0;
+    }
+      #navigation-left,
+      #navigation-right {
+        width: 129px;
+        font-size: 14px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        line-height: 25px;
+      }
+        #navigation-left {
+          float: left;
+        }
+        #navigation-right {
+          float: right;
+          text-align: right;
+        }
+      #navigation-center {
+        width: 243px;
+        margin: 0 auto;
+        position: relative;
+      }
+        #navigation-center input {
+          border: 1px solid {color:Links};
+          -moz-border-radius: 5px;
+          -webkit-border-radius: 5px;
+          border-radius: 5px;
+          background: transparent;
+          height: 23px;
+          line-height: 23px;
+          color: {color:Text};
+          font-size: 14px;
+          width: 231px;
+          padding: 0 5px;
+          position: absolute;
+          top: 0;
+          left: 0;
+          z-index: 1;
+          font-family: Baskerville, “Times New Roman”, Times, serif;
+        }
+        #navigation-center #search-background {
+          background: {color:Links};
+          opacity: .5;
+          height: 25px;
+          -moz-border-radius: 5px;
+          -webkit-border-radius: 5px;
+          border-radius: 5px;
+        }
+        
+    #credit {
+      text-align: center;
+      font-style: italic;
+      font-size: 16px;
+      margin-top: 18px;
+    }
+  </style>
+  <style type="text/css">{CustomCSS}</style>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.js"></script>
+  <script src="http://static.tumblr.com/usaykzx/4P5ky45bz/jquery.example.js"></script>
+</head>
+
+<body>
+  
+  <div id="container">
+    
+    <div id="header">
+      
+      <ul>
+        {block:IfShowRSSLink}<li><a href="{RSS}">{lang:RSS}</a></li>{/block:IfShowRSSLink}
+        {block:IfShowArchiveLink}<li><a href="/archive">{lang:Archive}</a></li>{/block:IfShowArchiveLink}
+        {block:IfShowLikesLink}<li><a href="/liked/by/{Name}">{lang:Likes}</a></li>{/block:IfShowLikesLink}
+        {block:HasPages} 
+          {block:Pages}
+            <li><a href="{URL}">{Label}</a></li>
+          {/block:Pages}
+        {/block:HasPages}
+        {block:AskEnabled}<li><a href="/ask">{AskLabel}</a></li>{/block:AskEnabled}
+                {block:SubmissionsEnabled}<li><a href="/submit">{SubmitLabel}</a></li>{/block:SubmissionsEnabled} 
+      </ul>
+       
+      <h1><a href="/">{Title}</a></h1>
+      
+      {block:Description}
+        <p>{Description}</p>
+      {/block:Description}
+        
+    </div>
+    
+    {block:Posts}
+    <div class="post">
+    
+      <hr />
+    
+      <div class="post-meta">
+        <a href="{Permalink}">{Month} {DayOfMonth}, {Year}</a>
+        {block:IfShowNotes}
+          {block:NoteCount}
+            &bull; <a href="{Permalink}">{NoteCountWithLabel}</a>
+          {/block:NoteCount} 
+        {/block:IfShowNotes}
+        {block:IfDisqusShortname}
+          &bull; <a class="dsq-comment-count" href="{Permalink}#disqus_thread">{lang:Comments}</a>
+        {/block:IfDisqusShortname}
+        
+        {block:ContentSource}
+            &bull; <a href="{SourceURL}" style="max-width:300px; text-overflow:clip;">{block:SourceLogo}<img src="{WhiteLogoURL}" width="{LogoWidth}" height="{LogoHeight}" alt="{SourceTitle}" style="vertical-align:top;" />{/block:SourceLogo}{block:NoSourceLogo}{SourceTitle}{/block:NoSourceLogo}</a>
+        {/block:ContentSource}
+        
+      </div>
+      
+      <div class="post-content">
+      
+        {block:Photo}
+          <div class="photo{block:Caption} captioned{/block:Caption}">
+           
+            <div class="photo-wrapper">{LinkOpenTag}<img src="{PhotoURL-500}" alt="{PhotoAlt}" />{LinkCloseTag}</div>
+            
+            {block:Caption}
+              <div class="body">
+                {Caption}
+              </div>
+            {/block:Caption}
+            
+            <div class="clear"></div>
+          
+          </div>
+        {/block:Photo}
+        
+        {block:Quote}
+          <div class="quote">
+        
+            <div class="q-wrapper"><q class="{Length}">{Quote}</q></div>
+            
+            {block:Source}
+            <div class="body">
+              {Source}
+            </div>
+            {/block:Source}
+            
+          </div>
+        {/block:Quote}
+        
+        {block:Text}
+          <div class="text">
+        
+            {block:Title}<h2>{Title}</h2>{/block:Title}
+          
+            <div class="body">
+              {Body}
+            </div>
+          
+          </div> 
+        {/block:Text}
+        
+        {block:Video}
+          <div class="video{block:Caption} captioned{/block:Caption}">
+         
+            <div class="video-wrapper">{Video-500}</div>
+            
+            {block:Caption}
+            <div class="body">
+              {Caption}
+            </div>
+            {/block:Caption}
+            
+            <div class="clear"></div>
+          
+          </div>
+        {/block:Video}
+        
+        {block:Audio}
+          <div class="audio">
+            
+            <div class="audio-info {block:AlbumArt}hasart{/block:AlbumArt}">
+              {block:AlbumArt}
+                <div class="audio-info-left">
+                  <img src="{AlbumArtURL}" />
+                </div>
+              {/block:AlbumArt}
+              <div class="audio-info-right {block:TrackName}hasmeta{/block:TrackName} {block:Artist}hasmeta{/block:Artist} {block:Album}hasmeta{/block:Album}">
+                {block:TrackName}<div class="audio-trackname">{TrackName}</div>{/block:TrackName}
+                {block:Artist}<div class="audio-artist">{Artist}</div>{/block:Artist}
+                {block:Album}<div class="audio-album">{Album}</div>{/block:Album}
+                {block:ifWhiteAudioPlayer}
+                  <div class="audio-player">{AudioPlayerWhite}</div>
+                {/block:ifWhiteAudioPlayer}
+                {block:ifNotWhiteAudioPlayer}
+                  <div class="audio-player">{AudioPlayerBlack}</div>
+                {/block:ifNotWhiteAudioPlayer}
+              </div>
+              <div class="clear"></div>
+            </div>
+            
+            {block:Caption}
+              <div class="body">
+                {Caption}
+              </div>
+            {/block:Caption}
+            
+          </div>
+        {/block:Audio}
+        
+        {block:Chat}
+          <div class="conversation">  
+          
+            {block:Title}<h2>{Title}</h2>{/block:Title}
+                         
+            <table cellspacing="0">
+              {block:Lines}
+                <tr class="user{UserNumber}">
+                  <th>{block:Label}{Label}{/block:Label}</th>
+                  <td>{Line}</td>
+                </tr>
+              {/block:Lines}
+            </table>
+            
+          </div> 
+        {/block:Chat}
+        
+        {block:Link}
+          <div class="link">
+        
+            <h2><a href="{URL}" {Target}><span>{Name}</span></a></h2>
+            
+            {block:Description} 
+              <div class="body">
+                {Description}
+              </div>
+            {/block:Description}
+          
+          </div>
+        {/block:Link}
+        
+        {block:Answer}          
+          <div class="answer">
+          
+            <div class="answer-question">
+              <div class="answer-label">Q</div>
+              <div class="body">
+                {Question}
+              </div>
+              <div class="answer-asker post-{PostID}">
+                <div class="answer-point">
+                  <div class="answer-point-top"></div>
+                  <div class="answer-point-bottom"></div>
+                </div>
+                <style>
+                  .post-{PostID} .answer-asker-avatar { background: url({AskerPortraitURL-64})}
+                </style>
+                <div class="answer-asker-avatar">{Asker}</div>
+              </div>
+              <div class="clear"></div>
+            </div>
+            
+            <div class="answer-answer">
+              <div class="answer-label">A</div>
+              <div class="body">
+                {Answer}
+              </div>
+            </div>
+          
+          </div>
+        {/block:Answer}
+      
+      </div>
+      
+      {block:IfShowNotes}
+        {block:PostNotes} 
+          <div class="post-notes">
+            {PostNotes}
+          </div>
+        {/block:PostNotes} 
+      {/block:IfShowNotes}
+      
+      {block:PermalinkPage}
+        {block:IfDisqusShortname}
+          {block:Permalink}
+          <div id="disqus_thread"></div>
+          <script type="text/javascript" src="http://disqus.com/forums/{text:Disqus Shortname}/embed.js"></script>
+          <noscript><a href="http://{text:Disqus Shortname}.disqus.com/?url=ref">{lang:View the discussion thread}</a></noscript>
+          {/block:Permalink}
+        {/block:IfDisqusShortname}
+      {/block:PermalinkPage}
+    
+    </div>
+    {/block:Posts}
+    
+    <div id="footer">
+      
+      <div id="navigation">
+        
+        {block:NextPage}<div id="navigation-left"><a href="{NextPage}">{lang:Older}</a></div>{/block:NextPage}
+        {block:PreviousPage}<div id="navigation-right"><a href="{PreviousPage}">{lang:Newer}</a></div>{/block:PreviousPage}
+        <div id="navigation-center">
+          <form action="/search" method="get">
+            <input type="text" name="q" class="prefill" title="{lang:Search}"/>
+          </form>
+          <div id="search-background"></div>
+        </div>
+      </div>
+      
+      <div id="credit">
+        <span>Designed by <a href="http://sleepoversf.tumblr.com/">Sleepover</a></span>
+      </div>
+    
+    </div>
+
+  </div>
+  
+  <script type="text/javascript">
+  $(window).load(function() {
+    $('.prefill').example(function() {
+     return $(this).attr('title'); 
+    });
+  });
+  </script>
+  
+  {block:IfDisqusShortname}
+    <script type="text/javascript">
+    //<![CDATA[
+    (function() {
+        var links = document.getElementsByTagName('a');
+        var query = '?';
+        for(var i = 0; i < links.length; i++) {
+        if(links[i].href.indexOf('#disqus_thread') >= 0) {
+            query += 'url' + i + '=' + encodeURIComponent(links[i].href) + '&';
+        }
+        }
+        document.write('<script charset="utf-8" type="text/javascript" src="http://disqus.com/forums/{text:Disqus Shortname}/get_num_replies.js' + query + '"></' + 'script>');
+    })();
+    //]]>
+    </script>
+  {/block:IfDisqusShortname}
+  
+</body>
+
+</html>

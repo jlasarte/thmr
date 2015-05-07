@@ -1,0 +1,138 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<!-- Sample template (html) file -->
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <style type="text/css">
+            body {
+                font: 80% sans-serif;
+            }
+            table {
+                font-size: 100%;
+            }
+        </style>
+
+        <!-- just a static variable -->
+        <title>{$title}</title>
+    </head>
+    <body>
+        {c}This is a comment, hidden from the user{/c}
+
+        <!-- Escape using htmlentities(...) -->
+        {e}This <strong>text</strong> is safe{/e}
+
+        <br />Check array vars: {$sampleArray.middle.inner}<br />
+
+        <!-- we use a dynamic var here, 'caus it contains stuff that needs to be parsed -->
+        <br />{@body}<br />
+
+        <!-- define a custom block html here -->
+        {subTemplate}
+        We change the template var @subTemplate (adding something new): <br />
+        1 - {$title}, 2 - {$customVar}, 3 - random numbers: {randomNo/}, {randomNo/}
+        {/subTemplate}
+
+        <!-- we use same dynamic, but get diffent result thanked to the block definition above -->
+        {@body}<br />
+
+        <!-- a simple conditional scheme may, also, be useful -->
+        In main document -
+        {if("var":"info")}
+            Info: {$info}<br />
+        {else}
+            No info available.<br />
+        {/if}
+
+        <!-- In complex dynamics we may need to intercalated conditions (or cycles).
+        To show the parser where every block start/ends use :suffixes -->
+        {blockParser}
+        In subtemplate -
+        {if:0("var":"info")}
+            Info: {$info}
+            {if:title("var":"title","value":"Page title")}
+                The title is standard
+            {else:title}
+                We changed the title
+            {/if:title} <br />
+        {else:0}
+            No info available.<br />
+        {/if:0}
+        {/blockParser}
+
+        <!-- same as above, but with support for cycles -->
+        {cycleSkin}
+        <ul style="font-size: 80%;">
+            {itemSkin}<li>Item name: {$name}</li>{/itemSkin}
+        </ul>
+        {/cycleSkin}
+
+        <!-- a block that triggers @cycleSkin parsing -->
+        {cycleResults/}
+
+        <!-- same as above, but with a separator between items -->
+        {cycleSkin}
+        {itemSkin} {$name} {!sep:itemSkin} | {/itemSkin}
+        <br />
+        {/cycleSkin}
+
+        <!-- a block that triggers @cycleSkin parsing -->
+        {cycleResults/}
+
+        <!-- we use here the WYSIWYG friendly loop wrapper, in this case we may have even/odd variations -->
+        {cycleSkin}
+        {itemSkin("itemTag":"span")}
+        [ <span style="color: #a00;">{$name}</span> -
+        <span style="text-decoration: underline;">{$name}</span> | {!sep:itemSkin} ] <br /><br />
+        {/itemSkin}
+        {/cycleSkin}
+
+        <!-- a block that triggers @cycleSkin parsing -->
+        {cycleResults/}
+
+        <!--{c}--><hr />This text is only visible in html template :)<br />
+        Encapsulating Pheme comment placers in html comment tags makes them fully invisible in the HTML preview.<br />
+        You can use this trick to make any block placeholder invisible (as seen bellow).<br /><br /><!--{/c}-->
+
+        <!-- we use here the WYSIWYG friendly loop wrapper and the HTML comment trick -->
+        {cycleSkin}
+        {itemSkin("itemTag":"div")}
+        <div style="background: #faa; float: left; border-left: 5px solid #e66;">
+            Random no:
+            <!--{group}<!-- Used here to allow inner DIVs -->
+            {randomNo/}
+            <div style="background: #ffa">
+                {$name}
+            </div>
+            <!--{/group}<!-->
+        </div>
+        <div style="clear: left;">&nbsp;{!skip:itemSkin}</div>
+        {/itemSkin}
+        {/cycleSkin}
+
+        <!-- a block that triggers @cycleSkin parsing -->
+        {cycleResults/}
+
+        <!-- we use here the WYSIWYG friendly loop wrapper (2-dim version) -->
+        {cycleSkin}
+        {itemSkin("itemTag":"td", "groupTag":"tr", "showEmpty":true)}
+        <table>
+            <tr><th><!--{!skip:itemSkin}-->WYSIWYG</th><th>friendly</th><th>2-dim template (will iterate)</th></tr>
+            <tr bgcolor="#dddddd"><td>Even row: {$name}</td><td bgcolor="#ccccee">{$name}</td><td bgcolor="#cceecc">{$name}</td></tr>
+            <tr bgcolor="#eeeeee"><td>Odd row: {$name}</td><td bgcolor="#ddddff">{$name}</td><td bgcolor="#ddffdd">{$name}</td></tr>
+            <tr><td></td><td bgcolor="#ddddff">-</td><td bgcolor="#ddffdd">-</td></tr>
+        </table>
+        {encapsulateInCustomBlockToPreventTagParsing}
+        <table>
+            <tr><th>This</th><th>table's rows</th><th>will NOT be iterated</th></tr>
+            <tr bgcolor="#dddddd"><td>Even row: {$name}</td><td>{$name}</td><td>{$name}</td></tr>
+            <tr bgcolor="#eeeeee"><td>Odd row: {$name}</td><td>{$name}</td><td>{$name}</td></tr>
+        </table>
+        {/encapsulateInCustomBlockToPreventTagParsing}
+        {/itemSkin}
+        {/cycleSkin}
+
+        <!-- a block that triggers @cycleSkin parsing -->
+        {cycleResults/}
+    </body>
+</html>

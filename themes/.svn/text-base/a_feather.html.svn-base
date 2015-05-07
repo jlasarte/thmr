@@ -1,0 +1,508 @@
+<!--
+  "Feather 2.0"
+  http://www.tumblr.com/theme/36403
+
+  Light as feather
+  An extremely simple design that's made to showcase your content.
+
+  Features:
+
+  High-Res photos/wider column (Optional)
+  Larger fonts (Optional)
+  Social Links (Optional)
+  Custom background color/text color/link color etc.
+
+  By default, the High-Res and Larger fonts are disabled. Enable in customize. Website Link must include "http://".
+
+  by Eric Hu
+  http://erichu.tumblr.com/
+  http://ericpaints.it/
+ -->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="description" content="{block:IndexPage}{block:Description}{MetaDescription}{/block:Description}{/block:IndexPage}{block:PermalinkPage}{PostSummary}{/block:PermalinkPage}" />
+<title>{Title} {block:PostTitle} {PostTitle} {/block:PostTitle}</title>
+
+<link rel="shortcut icon" href="{Favicon}">
+<link rel="alternate" type="application/rss+xml" href="{RSS}">
+
+<link rel="apple-touch-icon" href="{PortraitURL-128}"></link>
+
+<meta name="text:Google Analytics ID" content="" />
+<meta name="text:Twitter Name" content="" />
+<meta name="text:Flickr Name" content="" />
+<meta name="text:Facebook Name" content="" />
+<meta name="text:Website Name" content="" />
+<meta name="text:Website Link" content="" />
+<meta name="text:Youtube Name" content="" />
+<meta name="text:Disqus Shortname" content="" />
+<meta name="if:High Res" content="0" />
+<meta name="if:Larger Font" content="0" />
+<meta name="if:Show Archive Link" content="1" />
+
+<!-- DEFAULT COLORS -->
+<meta name="color:Background" content="#fff"/>
+<meta name="color:Description" content="#919191"/>
+<meta name="color:Text" content="#888"/>
+<meta name="color:Links" content="#6DC0A9"/>
+<meta name="color:Links Hover" content="#333"/>
+<meta name="color:Heading" content="#333"/>
+<meta name="color:Heading Hover" content="#000"/>
+<meta name="color:Description" content="#919191"/>
+<meta name="color:Postmeta" content="#ccc"/>
+<meta name="color:Postmeta Hover" content="#333"/>
+
+<link rel="stylesheet" href="http://static.tumblr.com/anfpypi/cp4mbbi94/feather_2.0_min.css" />
+
+
+<style type="text/css" media="screen">
+
+  {CustomCSS}
+
+  body {
+    background: {color:Background};
+    color: {color:Text}; }
+
+  ::-moz-selection { background: {color:Links}; color: #fff; text-shadow: none; }
+  ::selection { background: {color:Links}; color: #fff; text-shadow: none; }
+
+  header .links a, header .links a:link, header .links a:visited, header .description a, header .description a:link, header .description a:visited, .post p a, .post p a:link, .post p a:visited, #pagination a, #pageination a:link, #pagination a:visited, ol.notes li a, ol.notes li a:link, ol.notes li a:visited, .question a, .question a:link, .question a:visited { color: {color:Links}; }
+
+  header .links a:hover, header .description a:hover, #pagination a:hover, .post p a:hover, .link h2 a:hover, ol.notes li a:hover { color: {color:Links Hover}; }
+
+  header h1 a { color: {color:Heading}; }
+
+  header h1 a:hover { color: {color:Heading Hover}; }
+
+  header .description { color: {color:Description}; }
+
+  #content .post .postmeta a, #content .post .postmeta a:link, #content .post .postmeta a:visited { color: {color:Postmeta}; }
+
+  #content .post .postmeta a:hover { color: {color:Postmeta Hover}; }
+
+    #disqus_thread { width: 500px; padding: 0 0 75px 0; }
+
+    {block:IfHighRes}
+      #container, #content { width: 700px;}
+
+      .photo img, .photo a img, .photoset img, .photoset a img {
+    width: 700px;
+    margin: 0 0 15px 0; }
+    {/block:IfHighRes}
+
+    {block:IfLargerFont}
+      header h1 a, header h1 a:link, header h1 a:visited {
+      font: normal 20px Georgia, 'Times New Roman', Times, serif; }
+
+      #container, .post h2, #pagination, #search_form input[type=text] {
+        font: normal 13px Georgia, 'Times New Roman', Times, serif; }
+
+      .quote p.quote_text, span.playcount {
+      font: italic 12px Georgia, 'Times New Roman', Times, serif; }
+
+    .question {
+      font: bold 13px Georgia, 'Times New Roman', Times, serif; }
+
+    #search_form input[type=text] {
+      width: 135px; }
+  {/block:IfLargerFont}
+</style>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+
+
+{block:IfHighRes}
+<script type="text/javascript">
+$(function() {
+    var color = "6DC0A9";
+    $("iframe").each(function() {
+        var $obj = $(this);
+        var data = $obj.attr("data");
+        var vsrc = $obj.attr("src");
+        var oldW = $obj.attr("width");
+        var newW = 700;
+        var oldH = $obj.attr("height");
+        var p = oldW/newW;
+        var newH = (oldH / p);
+        if (vsrc.search("vimeo") > 0) {
+            $obj.replaceWith("<iframe src='"+vsrc+"' color='"+color+"' width='"+newW+"' height='"+newH+"' frameborder='0'></iframe>");
+        }
+      else if (vsrc.search("youtube") > 0) {
+        $obj.replaceWith("<iframe src='"+vsrc+"' width='"+newW+"' height='"+newH+"' frameborder='0' allowfullscreen></iframe>")
+      }
+    });
+
+  var search = $("#search_query").val();
+  var placeholder = "Search...";
+  var fadeToOpacity = 0.6;
+  $("#search_query").fadeTo("normal", fadeToOpacity);
+  if (search == "") {
+    $("#search_query").val(placeholder); }
+  $("#search_query").blur(function() {
+    search = $("#search_query").val();
+    if (!(search != "" && search != placeholder)) {
+      $("#search_query").val(placeholder); }
+      $("#search_query").fadeTo("normal", fadeToOpacity);
+  });
+  $("#search_query").focus(function() {
+    search = $("#search_query").val();
+    if (search == placeholder) {
+      $("#search_query").val(""); }
+    $("#search_query").fadeTo("normal", 1);
+  });
+})
+</script>
+{/block:IfHighRes}
+
+</head>
+
+<body>
+
+<div id="container">
+
+<header>
+
+  <h1><a href="/">{Title}</a></h1>
+
+  {block:Description}
+    <div class="description">{Description}</div>
+  {/block:Description}
+
+  <div class="links">
+    <ul>
+
+    {block:AskEnabled}<li><a href="/ask">ask</a></li>{/block:AskEnabled}
+    {block:IfShowArchiveLink}<li><a href="/archive">Archive</a></li>{/block:IfShowArchiveLink}
+    {block:SubmissionsEnabled}<li><a href="/submit">{SubmitLabel}</a></li>{/block:SubmissionsEnabled}
+
+    {block:IfWebsiteLink}<li><a href="{text:Website Link}">{block:IfWebsiteName}{text:Website Name}{/block:IfWebsiteName}{block:IfNotWebsiteName}Website{/block:IfNotWebsiteName}</a></li>{/block:IfWebsiteLink}
+    {block:HasPages}
+      {block:Pages}<li><a href="{URL}">{Label}</a></li>{/block:Pages}
+    {/block:HasPages}
+
+    {block:IfFacebookName}<li><a href="http://facebook.com/{text:Facebook Name}">Facebook</a></li>{/block:IfFacebookName}
+    {block:IfFlickrName}<li><a href="http://flickr.com/{text:Flickr Name}">Flickr</a></li>{/block:IfFlickrName}
+    {block:IfTwitterName}<li><a href="http://twitter.com/{text:Twitter Name}">Twitter</a></li>{/block:IfTwitterName}
+    {block:IfYoutubeName}<li><a href="http://youtube.com/{text:Youtube Name}">Youtube</a></li>{/block:IfYoutubeName}
+
+    </ul>
+  </div>
+
+</header>
+
+<div id="content">
+
+{block:SearchPage}
+  <article>
+    {block:SearchResults}
+      <div id="searchresults">{lang:SearchResultCount results for SearchQuery 2}</div>
+    {/block:SearchResults}
+
+    {block:NoSearchResults}
+      <div id="searchresults">{lang:No search results for SearchQuery 2}</div>
+    {/block:NoSearchResults}
+  </article>
+
+{/block:SearchPage}
+
+{block:Posts}
+
+
+  {block:Quote}
+
+    <div class="quote post">
+
+      <p class="quote_text">"{Quote}"</p>
+
+        {block:Source}<p>&mdash; {Source}</p>{/block:Source}
+
+      <div class="postmeta">{block:Date}<a href="{Permalink}">{TimeAgo}</a>&nbsp; {/block:Date}<a href="{Permalink}">{lang:Notes} ({NoteCount})</a></div>
+
+    </div>
+
+    {block:PostNotes}
+      <div>{PostNotes}</div>
+    {/block:PostNotes}
+
+  {/block:Quote}
+
+
+  {block:Photo}
+
+    <div class="photo post">
+
+
+      {block:IfNotHighRes}
+        {LinkOpenTag}
+            <img src="{PhotoURL-500}" alt="{PhotoAlt}"/>
+        {LinkCloseTag}
+      {/block:IfNotHighRes}
+
+      {block:IfHighRes}
+        {LinkOpenTag}
+            <img src="{PhotoURL-HighRes}" alt="{PhotoAlt}"/>
+        {LinkCloseTag}
+      {/block:IfHighRes}
+
+      {block:Caption}
+        <div class="caption">{Caption}</div>
+      {/block:Caption}
+
+
+      <div class="postmeta">{block:Date}<a href="{Permalink}">{TimeAgo}</a>&nbsp; {/block:Date}<a href="{Permalink}">{lang:Notes} ({NoteCount})</a></div>
+
+    </div>
+
+    {block:PostNotes}
+      <div>{PostNotes}</div>
+    {/block:PostNotes}
+
+  {/block:Photo}
+
+  {block:IfNotHighRes}
+  {block:Photoset}
+    <div class="photoset post">
+
+        {Photoset-500}
+
+        {block:Caption}
+        <div class="caption">{Caption}</div>
+      {/block:Caption}
+
+        <div class="postmeta">{block:Date}<a href="{Permalink}">{TimeAgo}</a>&nbsp; {/block:Date}<a href="{Permalink}">{lang:Notes} ({NoteCount})</a></div>
+
+      </div>
+
+      {block:PostNotes}
+      <div>{PostNotes}</div>
+    {/block:PostNotes}
+
+  {/block:Photoset}
+  {/block:IfNotHighRes}
+
+  {block:IfHighRes}
+  {block:Photoset}
+    <div class="photoset post">
+
+        {Photoset-700}
+
+        {block:Caption}
+        <div class="caption">{Caption}</div>
+      {/block:Caption}
+
+        <div class="postmeta">{block:Date}<a href="{Permalink}">{TimeAgo}</a>&nbsp; {/block:Date}<a href="{Permalink}">{lang:Notes} ({NoteCount})</a></div>
+
+      </div>
+
+      {block:PostNotes}
+      <div>{PostNotes}</div>
+    {/block:PostNotes}
+
+  {/block:Photoset}
+  {/block:IfHighRes}
+
+
+  {block:Video}
+
+    <div class="video post">
+
+      {Video-500}
+
+      {block:Caption}
+        <div class="caption">{Caption}</div>
+      {/block:Caption}
+
+      <div class="postmeta">{block:Date}<a href="{Permalink}">{TimeAgo}</a>&nbsp; {/block:Date}<a href="{Permalink}">{lang:Notes} ({NoteCount})</a></div>
+
+    </div>
+
+    {block:PostNotes}
+      <div>{PostNotes}</div>
+    {/block:PostNotes}
+
+    {/block:Video}
+
+
+  {block:Link}
+
+    <div class="link post">
+
+        <h2><a href="{URL}" {Target}>{Name}</a></h2>
+
+      {block:Description}
+        <p>{Description}</p>
+      {/block:Description}
+
+      <div class="postmeta">{block:Date}<a href="{Permalink}">{TimeAgo}</a>&nbsp; {/block:Date}<a href="{Permalink}">{lang:Notes} ({NoteCount})</a></div>
+
+    </div>
+
+    {block:PostNotes}
+      <div>{PostNotes}</div>
+    {/block:PostNotes}
+
+  {/block:Link}
+
+
+  {block:Chat}
+
+    <div class="conversation post">
+
+      {block:Title}
+                <h2>{Title}</h2>
+            {/block:Title}
+
+      <ul>
+        {block:Lines}
+          <li class="member{UserNumber}">
+            {block:Label}
+                            <span class="label">{Label}</span>
+                        {/block:Label}
+            {Line}
+          </li>
+        {/block:Lines}
+      </ul>
+
+      <div class="postmeta">{block:Date}<a href="{Permalink}">{TimeAgo}</a>&nbsp; {/block:Date}<a href="{Permalink}">{lang:Notes} ({NoteCount})</a></div>
+
+    </div>
+
+    {block:PostNotes}
+      <div>{PostNotes}</div>
+    {/block:PostNotes}
+
+  {/block:Chat}
+
+
+    {block:Text}
+
+        <div class="text post">
+
+            {block:Title}
+                <h2>{Title}</h2>
+            {/block:Title}
+
+            {Body}
+
+      <div class="postmeta">{block:Date}<a href="{Permalink}">{TimeAgo}</a>&nbsp; {/block:Date}<a href="{Permalink}">{lang:Notes} ({NoteCount})</a></div>
+
+        </div>
+
+    {block:PostNotes}
+      <div>{PostNotes}</div>
+    {/block:PostNotes}
+
+    {/block:Text}
+
+
+  {block:Audio}
+
+    <div class="post audio">
+
+      {AudioPlayerGrey}
+
+      <div class="audio_details">{block:Artist}{Artist}{/block:Artist} &ndash; {block:TrackName}{TrackName}{/block:TrackName} <span class="playcount">({PlayCountWithLabel})</span></div>
+
+      {block:Caption}<div class="caption">{Caption}</div>{/block:Caption}
+
+      {block:ExternalAudio}
+        <p><a href="{ExternalAudioURL}">{lang:Download}</a></p>
+      {/block:ExternalAudio}
+
+      <div class="postmeta">{block:Date}<a href="{Permalink}">{TimeAgo}</a>&nbsp; {/block:Date}<a href="{Permalink}">{lang:Notes} ({NoteCount})</a></div>
+
+    </div>
+
+    {block:PostNotes}
+      <div>{PostNotes}</div>
+    {/block:PostNotes}
+
+  {/block:Audio}
+
+
+  {block:Answer}
+
+    <div class="post answer">
+
+      <div class="question">{Asker} asked: {Question}</div>
+
+      <div class="answer-text">{Answer}</div>
+
+      <div class="postmeta">{block:Date}<a href="{Permalink}">{TimeAgo}</a>&nbsp; {/block:Date}<a href="{Permalink}">{lang:Notes} ({NoteCount})</a></div>
+
+    </div>
+
+    {block:PostNotes}
+      <div>{PostNotes}</div>
+    {/block:PostNotes}
+
+  {/block:Answer}
+
+
+{/block:Posts}
+
+{block:Pagination}
+
+  <div id="pagination">
+
+    {block:NextPage}
+            <a href="{NextPage}" id="nav-next" style="text-transform:lowercase;">&larr; {lang:Older}</a>
+        {/block:NextPage}
+    <span class="page_number"> &nbsp; {CurrentPage}/{TotalPages} &nbsp;</span>
+    {block:PreviousPage}
+          <a href="{PreviousPage}" id="nav-prev" style="text-transform:lowercase;">{lang:Newer} &rarr;</a>
+        {/block:PreviousPage}
+
+  </div>
+
+{/block:Pagination}
+
+</div>
+
+
+<footer>
+
+<form action="/search" method="get" id="search_form">
+  <input type="text" id="search_query" name="q" value="{SearchQuery}" />
+</form>
+
+<div class="attribution"><a href="http://www.tumblr.com/theme/36403" title="tumblr theme feather 2.0">feather 2.0</a> by <a href="http://erichu.tumblr.com" title="eric hu">eric hu</a></div>
+
+<footer>
+
+</div>
+
+
+
+
+  {block:IfGoogleAnalyticsID}
+    <script type="text/javascript">var gaJsHost=(("https:"==document.location.protocol)?"https://ssl.":"http://www.");document.write(unescape("%3Cscript src='"+gaJsHost+"google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));</script><script type="text/javascript">try{var pageTracker=_gat._getTracker("{text:Google Analytics ID}");pageTracker._trackPageview()}catch(err){}</script>
+  {block:IfGoogleAnalyticsID}
+
+  {block:IfDisqusShortname}
+        <script type="text/javascript">
+            //<![CDATA[
+            (function() {
+                var links = document.getElementsByTagName('a');
+                var query = '?';
+                for(var i = 0; i < links.length; i++) {
+                    if(links[i].href.indexOf('#disqus_thread') >= 0) {
+                        query += 'url' + i + '=' + encodeURIComponent(links[i].href) + '&';
+                    }
+                }
+                document.write('<script charset="utf-8" type="text/javascript" src="http://disqus.com/forums/{text:Disqus Shortname}/get_num_replies.js' + query + '"></' + 'script>');
+            })();
+            //]]>
+        </script>
+    {/block:IfDisqusShortname}
+
+
+</body>
+
+</html>

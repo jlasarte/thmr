@@ -1,0 +1,431 @@
+   License: none (public domain)
+*/
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+/**
+ * Estilos generales.
+ * reset ^-1.
+ */
+ul {
+  list-style: square;
+}
+ul ul {
+  list-style: disc;
+}
+ol {
+  list-style: decimal;
+}
+ol ol {
+  list-style: lower-latin;
+}
+ol,
+ul {
+  padding-left: 3%;
+}
+ol li,
+ul li {
+  margin: 1% 0;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0 0 2% 0;
+}
+h1 {
+  font-size: 200%;
+}
+h2 {
+  font-size: 150%;
+}
+h3 {
+  font-size: 120%;
+}
+h4 {
+  font-size: 110%;
+}
+pre {
+  font-family: Consolas, Courrier New, monospace;
+  margin: 2%;
+}
+strong {
+  font-weight: bold;
+}
+em {
+  font-style: italic;
+}
+table {
+  width: 80%;
+  margin: 3% auto;
+  border-top: 1px solid #b4b4b4;
+  border-left: 1px solid #b4b4b4;
+}
+table th {
+  font-weight: bold;
+}
+table td,
+table th {
+  border-bottom: 1px solid #b4b4b4;
+  border-right: 1px solid #b4b4b4;
+  padding: 3% 7%;
+}
+blockquote {
+  margin-left: 2%;
+  padding-left: 2%;
+  font-style: italic;
+}
+p {
+  margin: 3% 0;
+}
+dl {
+  padding: 0.5em;
+  width: 100%;
+}
+dt {
+  float: left;
+  clear: left;
+  width: 20%;
+  text-align: right;
+  font-weight: bold;
+  margin-right: 3%;
+}
+dd {
+  padding: 0 0 0.5em 0;
+}
+a {
+  color: #a40802;
+  border-bottom: 1px solid #e9e7e8;
+  text-decoration: none;
+}
+.clearfix {
+  *zoom: 1;
+}
+.clearfix:before,
+.clearfix:after {
+  display: table;
+  content: "";
+  line-height: 0;
+}
+.clearfix:after {
+  clear: both;
+}
+code {
+  font-family: "Consolas", monospace;
+  background: #f2e9e1;
+  border: 1px solid #e9e7e8;
+  border-radius: 5px;
+}
+footer#main-footer {
+  background: #cccccc;
+  padding: 1%;
+  text-align: center;
+  -webkit-box-shadow: inset 0px 10px 15px -10px #000000;
+  box-shadow: inset 0px 10px 15px -10px #000000;
+}
+.post {
+  margin-bottom: 5%;
+}
+
+.post header .meta {
+  float: right;
+  color: #808080;
+}
+.post header .meta a {
+  color: #000000;
+  border: none;
+}
+.post img {
+  display: block;
+  margin: 0 auto;
+  border: 1px solid #ddd;
+  max-width: 100%;
+}
+
+.post .photoset {
+  display:block;
+  margin: 0 auto;
+}
+
+#blog-navigation {
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  padding: 2% 0;
+}
+#blog-navigation a {
+  border: none;
+  font-size: 1.5em;
+}
+/**
+ * Estilos generales
+ */
+body {
+  background-color: #eeeeee;
+  height: 100%;
+  font-family: "Segoe UI", "Helvetica Neue", Arial, Verdana, Tahoma, sans-serif;
+  font-size: 90%;
+  margin: 0 auto;
+  line-height: 1.5em;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #a40802;
+}
+pre {
+  background: #e9e7e8;
+  padding: 2%;
+  border: 1px solid #d1cccf;
+}
+ins {
+  background: #e1ffdb;
+  text-decoration: none;
+}
+q::before,
+q::after {
+  content: '"';
+}
+sub {
+  vertical-align: sub;
+  font-size: smaller;
+}
+sup {
+  vertical-align: super;
+  font-size: smaller;
+}
+del {
+  background: url(http://localhost:8888/some/css/../img/strike.gif);
+  text-decoration: none;
+}
+header#site-header {
+  padding: 0% 20% 1% 20%;
+}
+header#site-header .tagline {
+  color: #1c140d;
+  font-size: 150%;
+  font-style: italic;
+}
+header#site-header img {
+  float: left;
+}
+.depth {
+  display: block;
+  padding: 0px;
+  color: #a40802;
+  font: bold 7em Arial, sans-serif;
+  position: relative;
+  margin: 0;
+}
+.depth:before {
+  top: 1px;
+  left: 1px;
+}
+.depth:after {
+  top: 2px;
+  left: 2px;
+}
+.depth:before,
+.depth:after {
+  content: attr(title);
+  padding: 0px;
+  color: rgba(255, 255, 255, 0.2);
+  position: absolute;
+}
+#wrapper {
+  width: 80%;
+  background: #fff;
+  *zoom: 1;
+  margin: 3% auto;
+  border: 1px solid #ccc;
+}
+#wrapper:before,
+#wrapper:after {
+  display: table;
+  content: "";
+  line-height: 0;
+}
+#wrapper:after {
+  clear: both;
+}
+#main-navigation {
+  *zoom: 1;
+  margin-bottom: 5%;
+  padding: 0 20%;
+  border-bottom: 1px solid #ddd;
+}
+#main-navigation:before,
+#main-navigation:after {
+  display: table;
+  content: "";
+  line-height: 0;
+}
+#main-navigation:after {
+  clear: both;
+}
+#main-navigation a {
+  float: left;
+  margin-right: 5%;
+  color: #000000;
+  border: none;
+  padding: 1%;
+}
+#main-navigation a:hover {
+  color: #D28184;
+}
+#main-navigation a.current {
+  background: #e9e7e8;
+  color: #808080;
+  border-top: 1px solid #ddd;
+  border-right: 1px solid #ddd;
+  border-left: 1px solid #ddd;
+  border-bottom: none;
+}
+#main-content {
+  width: 60%;
+  clear: both;
+  margin: 0 auto 10% auto;
+}
+
+.quote .text {
+    color: #fff;
+    font-size: 200%;
+    padding: 5%;
+    clear: both;
+    font-style: italic;
+}
+
+.quote .long {
+  font-size: 150%;
+}
+
+.quote .copy {
+  background: #ccc;
+  padding: 1%;
+  text-align: right;
+}

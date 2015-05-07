@@ -1,0 +1,143 @@
+<html lang="en-US"><head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" type="text/css" href="assets/css/dorothea.css">
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+  <script type="text/javascript">
+      $(document).ready(function() {
+
+        $('.quote .text').each(function () {
+            var colors = Array("#a90329", "#3f6ea3", "#630947", "#420943");
+            var color = colors[Math.floor(Math.random()*colors.length)];
+            console.log(color);
+            $(this).css("background-color", color);
+        });
+    });
+  </script>
+  <meta name="if:Custom Photosets" content="1"/>
+</head>
+<body>
+      <div id="wrapper">
+
+  <header id="site-header" role="banner">
+    <a href="./"><h1 class="depth" title="{Title}">{Title}</h1></a>
+    <h2 class="tagline">{Description}</h2>   
+  </header>
+
+   <nav id="main-navigation">
+        {block:HasPages}
+            {block:Pages}<a href="{URL}">{Label}</a>{/block:Pages}
+        {/block:HasPages}
+    </nav>
+    <div id="main-content">
+      
+      {block:Posts}
+      <article class="post {PostType}">
+        <header class="clearfix">
+          <div class="meta">
+            <span class="date">{TimeAgo}</span> by <span class="author"> <a href="#">{PostAuthorName}</a> </span>
+          </div>
+          
+            {block:Text}
+            <h2> {Title} </h2>
+            </header>
+
+            <div class="entry-content">
+              {Body}
+            </div>
+            {/block:Text}
+            
+            {block:Photo}
+            </header>
+                        <div class="media">{LinkOpenTag}<img src="{PhotoURLHighRes}" alt="{PhotoAlt}" />{LinkCloseTag}</div>
+                        {block:Caption}<div class="copy">{Caption}</div>{/block:Caption}
+            {/block:Photo}
+
+            {block:Video}
+                </header>
+                <div class="media">{Video-700}</div>
+                {block:Caption}<div class="copy">{Caption}</div>{/block:Caption}
+            {/block:Video}
+                    
+            {block:Audio}
+                </header>
+                {block:IfShowAlbumArtOnAudioPosts}
+                    {block:AlbumArt}
+                        <div class="album_art">
+                            <img src="{AlbumArtURL}" alt="{block:Artist}{Artist}{/block:Artist}{block:TrackName} - {TrackName}{/block:TrackName}" style="margin-bottom:10px;" />
+                        </div>
+                    {/block:AlbumArt}
+                {/block:IfShowAlbumArtOnAudioPosts}
+                
+                <div class="audio">
+                    <div class="player">{AudioPlayerWhite}</div>
+                    <div class="meta">{PlayCountWithLabel}{block:ExternalAudio}<span class="download_external_audio"> &bull; <a href="{ExternalAudioURL}">{lang:Download}</a></span>{/block:ExternalAudio}</div>
+                    <div class="clear"></div>
+                </div>
+                <div class="clear"></div>
+                {block:Caption}<div class="copy">{Caption}</div>{/block:Caption}
+            {/block:Audio}
+                    
+            {block:Quote}
+                </header>
+                <div class="text {Length}">"{Quote}"</div>
+                {block:Source}
+                <div class="copy">
+                    {Source}
+                </div>
+                {/block:Source}
+            {/block:Quote}
+                        
+                    
+                    {block:Answer}
+                </header>
+                        <div class="question">
+                            <div class="nipple"></div>
+                            {Question}
+                        </div>
+                        <div class="asker_container"><img src="{AskerPortraitURL-24}">{Asker}</div>
+                        <div class="copy">{Answer}</div>
+                    {/block:Answer}
+                    
+                    {block:Chat}
+                        {block:Title}<h2 class="title">{Title}</h2>{/block:Title}
+                    </header>
+                        <div class="chat">
+                            <div class="lines">
+                                {block:Lines}
+                                    <div class="line {Alt}">{block:Label}<strong>{Label}</strong>{/block:Label} {Line}</div>
+                                {/block:Lines}
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                        <div style="height:10px;"></div>
+                    {/block:Chat}
+                    
+                    {block:Link}
+                        <h2 class="link"><a href="{URL}" {Target}>{Name} &raquo;</a></h2>
+                    </header>
+                        {block:Description}<div class="copy">{Description}</div>{/block:Description}
+                    {/block:Link}
+            
+            <footer>
+              <span class="comments">{NoteCountWithLabel}</span>
+                {block:HasTags}
+                    <span class="tags">
+                    {lang:Tagged}: {block:Tags}<a href="{TagURL}">{Tag}</a>,{/block:Tags}
+                    </span>
+                {/block:HasTags}
+            </footer>
+
+
+      </article>
+      {/block:Posts}
+    <div id="blog-navigation">
+      <a href="#">« older entries </a>
+    </div>
+    </div>
+    <footer id="main-footer">
+      Lorem ipsum aute aliquip labore nisi voluptate labore non occaecat qui consectetur veniam eiusmod enim ea cillum dolor laborum enim qui commodo ex sint reprehenderit. 
+    </footer>
+  </div>
+
+</body></html>

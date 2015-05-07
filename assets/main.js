@@ -1,0 +1,143 @@
+function pollIframe() {
+  hash = window.location.hash.split("/");
+  theme = hash[1] ? hash[1] : "redux.html";
+  operation = hash[2] ? hash[2] : "index";
+  params = hash[3];
+  url = 'test.php?theme='+theme+'&operation='+operation+"&params="+params;
+        iframe = $("#theme-preview");
+
+  iframe.attr('src', url);
+        //iframe.attr( 'src', function ( i, val ) { return val; });
+        iframe.load(function() {
+          $($('#theme-preview').contents().find("head")[0]).append('<base target="_parent" />');
+        });
+}
+
+function get_selected_theme() {
+  hash  = window.location.hash.split("/")
+  theme = hash[1] ? hash[1] : "redux.html";
+  return theme;
+}
+
+function setConfig() {
+  name  = $(this).attr("name");
+  type  = $(this).data("type");
+  if ($(this).attr("type") == "checkbox") {
+    value = $(this).is(":checked");
+  } else {
+    value = $(this).val();
+  }
+  json = '{"name":"'+name+'", "type": "'+type+'", "value": "'+value+'"}';
+  theme = get_selected_theme();
+  url = 'test.php?theme='+theme+'&operation=set_option';
+  $.ajax({
+    type: "GET",
+    url: url,
+    data: {params : json},
+    success: function(data) {
+      pollIframe(window.location.hash.split("/"));
+    }
+  });
+}
+
+function resetDefaults() {
+  theme = get_selected_theme();
+  url =  'test.php?theme='+theme+'&operation=reset_to_defaults';
+  $.get(url, function(data) {
+    pollIframe(window.location.hash.split("/"));
+  });
+}
+
+function themeChange() {
+  selected = $(this).val();
+  hash = window.location.hash;
+  hash = hash.split("/");
+  new_hash = '/'+selected;
+  if(hash[2]) { new_hash += "/"+hash[2]; }
+  if(hash[3]) { new_hash += "/"+hash[3]; }
+  window.location.hash = new_hash;
+  if ($("#theme-options").is(":visible")) {
+    $("#set-options").click();
+  }
+}
+
+function setOptions() {
+  if ($("#theme-preview").width() >= width) {
+    hash  = window.location.hash.split("/")
+    theme = hash[1] ? hash[1] : "redux.html";
+    url = 'test.php?theme='+theme+'&operation=get_options';
+    $.ajax({
+      type: 'GET',
+      url: url,
+      dataType: 'html',
+      success: function(data) {
+        $("#theme-options > .content > #options-list").html(data);
+        $(".configuration").change(setConfig);
+        $(".color").minicolors({theme : 'bootstrap', position: 'left', 
+          hide: function() {
+            $(this).change();
+        }});
+      }
+    });
+    $("#theme-preview").animate({width:'76%'}, 500);
+    $("#theme-options").show();
+    $('.nano').nanoScroller();
+  } else {
+    $("#theme-preview").animate({width:'100%'}, 500);
+    $("#theme-options").hide();
+  }
+}
+
+function importData() {
+  blogurl = $("#blog-url").val();
+  theme = get_selected_theme();
+  url = 'test.php?theme='+theme+'&operation=import_blog_data';
+  $.ajax({
+    type: "GET",
+    url: url,
+    data: {params : blogurl},
+    
+    beforeSend: function() {
+      $("body").append("<div id='load-screen'></div>");
+      $('#import-modal').modal('hide')
+    },
+    
+    success: function(data) {
+      $("#load-screen").remove();
+      pollIframe(window.location.hash.split("/"));
+    }
+  });
+}
+
+function refreshData() {
+  blogurl = $("#blog-url").val();
+  theme = get_selected_theme();
+  url = 'test.php?theme='+theme+'&operation=refresh_blog_data';
+  $.ajax({
+    type: "GET",
+    url: url,    
+    beforeSend: function() {
+      $("body").append("<div id='load-screen'></div>");
+      $('#import-modal').modal('hide')
+    },
+    
+    success: function(data) {
+      $("#load-screen").remove();
+      pollIframe(window.location.hash.split("/"));
+    }
+  });
+}
+
+$(function(){
+  width = $("#theme-preview").width();
+  iframe_anchor = $("#theme-preview");
+  $("#theme-options").hide();
+  pollIframe();
+  $("#theme-selector").change(themeChange);
+  $(window).bind('hashchange', pollIframe);
+  $("#reset-defaults").click(resetDefaults);
+  $("#set-options").click(setOptions);
+  $("#import-data").click(importData)
+  $("#refresh-data").click(refreshData)
+});
+

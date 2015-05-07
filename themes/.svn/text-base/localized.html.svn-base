@@ -1,0 +1,461 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <!-- 
+  Themocracy 1.0 - http://anthagio.com/themocracy
+  Theme by Anthagio - http://anthagio.com
+  Inspired by Rakfi's Confidence - http://tinyurl.com/cylp7vw
+  Support - http://anthagio.com/ask
+  -->
+
+  <title>{Title}{block:SearchPage} - Search results for "{SearchQuery}"{/block:SearchPage}{block:TagPage} - {Tag}{/block:TagPage}{block:PostSummary} - {PostSummary}{/block:PostSummary}</title>
+
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="description" content="{MetaDescription}" />
+  <meta name="author" content="Anthagio - http://anthagio.com" />
+  <meta name="keywords" content="{block:Tags}{Tag}, {/block:Tags}{Title}" />        
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+  <!-- OpenGraph -->
+  <meta property="og:site_name" content="{Title}" />
+  {block:PermalinkPage}<meta property="og:url" content="{Permalink}" />
+  <meta property="og:type" content="article" />
+  {block:Posts}{block:Text}{block:Title}<meta property="og:title" content="{PlaintextTitle}" />{/block:Title}
+  <meta property="og:description" content="{PlaintextBody}" />{/block:Text}
+  {block:Photo}<meta property="og:image" content="{PhotoURL-500}" />
+  {block:Caption}<meta property="og:description" content="{PlaintextCaption}" />{/block:Caption}{/block:Photo}
+  {block:Photoset}{block:Photos}<meta property="og:image" content="{PhotoURL-500}" />{/block:Photos}
+  {block:Caption}<meta property="og:description" content="{PlaintextCaption}" />{/block:Caption}{/block:Photoset}
+  {block:Quote}<meta property="og:title" content="{PlaintextQuote}" />
+  <meta property="og:description" content="{PlaintextSource}" />
+  <meta property="og:image" content="{PortraitURL-64}" />{/block:Quote}
+  {block:Link}<meta property="og:title" content="{PlaintextName}" />
+  <meta property="og:description" content="{PlaintextDescription}" />
+  <meta property="og:image" content="{PortraitURL-64}" />{/block:Link}
+  {block:Chat}<meta property="og:title" content="{PlaintextTitle}" />
+  <meta property="og:description" content="{block:Lines}{block:Label}{Label}: {/block:Label}{Line} {/block:Lines}" />
+  <meta property="og:image" content="{PortraitURL-64}" />{/block:Chat}
+  {block:Audio}<meta property="og:title" content="{block:Artist}{Artist} - {/block:Artist}{block:TrackName}{TrackName}{/block:TrackName}" />
+  <meta property="og:description" content="{PlaintextCaption}" />
+  {block:AlbumArt}<meta property="og:image" content="{AlbumArtURL}" />{/block:AlbumArt}{/block:Audio}
+  {block:Video}{block:Caption}<meta property="og:description" content="{PlaintextCaption}" />{/block:Caption}{/block:Video}
+  {block:Answer}<meta property="og:title" content="{PlaintextQuestion}" />
+  <meta property="og:description" content="{PlaintextAnswer}" />
+  <meta property="og:image" content="{PortraitURL-64}" />{/block:Answer}{/block:Posts}{/block:PermalinkPage}
+  {block:IndexPage}<meta property="og:title" content="{Title}" />
+  <meta property="og:type" content="blog" />
+  <meta property="og:description" content="{MetaDescription}" />
+  <meta property="og:image" content="{PortraitURL-64}" />{/block:IndexPage}
+
+  <meta name="image:Background" content="http://static.tumblr.com/3driglx/BBpm5afb1/body_background.png" />
+  <meta name="image:Header one" content="" />
+  <meta name="image:Header two" content="" />
+  <meta name="image:Header three" content="" />
+  <meta name="image:Header four" content="" />
+  <meta name="image:Header five" content="" />
+  <meta name="image:Sidebar header" content="" />
+
+  <meta name="color:Background" content="#efefef" />
+  <meta name="color:Accent" content="#ff1122" />
+  
+  <meta name="if:Show archive link" content="1" />
+  <meta name="if:Show random link" content="1" />
+  <meta name="if:Show RSS feed link" content="1" />
+  <meta name="if:Infinite scrolling on index page" content="0" />
+  <meta name="if:White audio player" content="1" />
+  <meta name="if:Black audio player" content="0" />
+  <meta name="if:Grey audio player" content="0" />
+  <meta name="if:Show share and tweet links" content="1" />
+  <meta name="if:Show search bar" content="1" />
+  <meta name="if:Show blogs I follow" content="1" />
+    
+  <meta name="text:Header one image link" content="" />
+  <meta name="text:Header one image caption" content="" />
+  <meta name="text:Header two image link" content="" />
+  <meta name="text:Header two image caption" content="" />
+  <meta name="text:Header three image link" content="" />
+  <meta name="text:Header three image caption" content="" />
+  <meta name="text:Header four image link" content="" />
+  <meta name="text:Header four image caption" content="" />
+  <meta name="text:Header five image link" content="" />
+  <meta name="text:Header five image caption" content="" />
+  
+  <meta name="text:Custom link 1 URL" content="" />
+  <meta name="text:Custom link 1 title" content="" />
+  <meta name="text:Custom link 2 URL" content="" />
+  <meta name="text:Custom link 2 title" content="" />
+  <meta name="text:Custom link 3 URL" content="" />
+  <meta name="text:Custom link 3 title" content="" />
+  <meta name="text:Custom link 4 URL" content="" />
+  <meta name="text:Custom link 4 title" content="" />
+
+  <meta name="text:Twitter username" content="" />
+  <meta name="text:Twitter tweet count" content="5" />
+  <meta name="text:Last Fm username" content="" />
+  <meta name="text:Last Fm song count" content="5" />
+  <meta name="text:Instagram access token" content="" />
+  <meta name="text:Instagram photo count" content="12" />
+  <meta name="text:Twitter tweet count" content="5" />
+  <meta name="text:Flickr ID number" content="" />
+  <meta name="text:Flickr photo count" content="12" />
+
+  <meta name="text:Extra sidebar section title one" content="" />
+  <meta name="text:Extra sidebar section content one" content="" />
+  <meta name="text:Extra sidebar section title two" content="" />
+  <meta name="text:Extra sidebar section content two" content="" />
+  <meta name="text:Extra sidebar section title three" content="" />
+  <meta name="text:Extra sidebar section content three" content="" />
+  <meta name="text:Extra sidebar section title four" content="" />
+  <meta name="text:Extra sidebar section content four" content="" />
+  <meta name="text:Extra sidebar section title five" content="" />
+  <meta name="text:Extra sidebar section content five" content="" />
+  <meta name="text:Extra sidebar section title six" content="" />
+  <meta name="text:Extra sidebar section content six" content="" />
+  <meta name="text:Extra sidebar section title seven" content="" />
+  <meta name="text:Extra sidebar section content seven" content="" />
+
+  <meta name="text:Disqus shortname" content="" />
+
+  <link rel="shortcut icon" href="{Favicon}" />
+  <link rel="apple-touch-icon" href="{PortraitURL-128}" />
+  <link rel="alternate" type="application/rss+xml" href="{RSS}" />    
+
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>{block:ifHeaderoneimage}
+  <script type="text/javascript" src="http://static.tumblr.com/3driglx/ppQm7apxj/jquery.nivo.slider.js"></script>
+  <script type="text/javascript">$(window).load(function() {$('#slider').nivoSlider({effect: 'sliceDown', pauseTime: 5000, directionNavHide: true, randomStart: true, controlNav: false});});</script>{/block:ifHeaderoneimage}
+  <script type="text/javascript" src="http://static.tumblr.com/3driglx/sLvm6kmdb/theme.js"></script>{block:IndexPage}{block:ifInfinitescrollingonindexpage}
+  <script type="text/javascript" src="http://static.tumblr.com/3driglx/kRam6ikwg/infinite_{block:DayPage}dd{/block:DayPage}{block:TagPage}dd{/block:TagPage}{block:SearchPage}dd{/block:SearchPage}scroll.js"></script>{/block:ifInfinitescrollingonindexpage}{/block:IndexPage}
+  <script type="text/javascript">var theme = {name: '{Name}', twitter: {block:ifTwitterusername}true{/block:ifTwitterusername}{block:ifNotTwitterusername}false{/block:ifNotTwitterusername}, flickr: {block:ifFlickrIDnumber}true{/block:ifFlickrIDnumber}{block:ifNotFlickrIDnumber}false{/block:ifNotFlickrIDnumber}, lastfm: {block:ifLastFmusername}true{/block:ifLastFmusername}{block:ifNotLastFmusername}false{/block:ifNotLastFmusername}, loadingtext: '{lang:Loading}', nomoreposts: '{block:English}No more posts.{/block:English}{block:German}Ende{/block:German}{block:French}Fin{/block:French}{block:Italian}Fine{/block:Italian}{block:Japanese}終わり{/block:Japanese}{block:Turkish}Son{/block:Turkish}{block:Spanish}Final{/block:Spanish}{block:Russian}конец{/block:Russian}{block:Polish}Koniec{/block:Polish}{block:Portuguese}Final{/block:Portuguese}{block:Dutch}Einde{/block:Dutch}'}</script>
+
+  <link rel="stylesheet" href="http://static.tumblr.com/3driglx/mk7m5aei0/reset.css" type="text/css" />
+  <link rel="stylesheet" href="http://static.tumblr.com/3driglx/s1Sm9ejww/main.css" type="text/css" />
+  <link rel="stylesheet" href="http://static.tumblr.com/3driglx/NX8m5aelw/fancybox.css" type="text/css" />
+  <link rel="stylesheet" href="http://static.tumblr.com/3driglx/SJXm5aeo2/modernpictogramsnormal.css" type="text/css" />
+  <link rel="stylesheet" href="http://static.tumblr.com/3driglx/rQZm7f39m/nivo-slider.css" type="text/css" />
+
+  <style type="text/css"> 
+  body {background-color: {color:Background}; {block:ifBackgroundimage}background-image: url("{image:Background}");{/block:ifBackgroundimage}}
+  @media screen and (-webkit-min-device-pixel-ratio:0) {#container form#navigation select {padding: 8px!important;}}
+  #container ul#navigation li a:hover {color: {color:Accent}!important;}
+  #container #posts {{block:Posts}{block:Date}width: 540px!important;{/block:Date}{/block:Posts}}
+  #container #posts #credit2 {{block:IndexPage}{block:Posts}{block:Date}display: inline-block!important;{/block:Date}{/block:Posts}{/block:IndexPage}{block:SearchPage}display: none!important;{/block:SearchPage}{block:TagPage}display: none!important;{/block:TagPage}{block:DayPage}display: none!important;{/block:DayPage}}
+  #container #posts .post .body {{block:Posts}{block:Date}padding: 7px 20px 13px 20px!important;{/block:Date}{/block:Posts} {block:Posts}{block:Date}width: 500px!important;{/block:Date}{/block:Posts}}
+  #container #posts .post .share_links {background-color: {color:Accent};}
+  @media screen and (-webkit-min-device-pixel-ratio:0) {#container #posts .post .share_links {padding: 3px 6px 13px 7px!important;}}
+  #container #posts .post a {color: {color:Accent};}
+  #container #posts .title {{block:Posts}{block:Date}margin: 8px 0 5px 0!important;{/block:Date}{/block:Posts}}
+  #container #posts .post .media a.zoom {color: {color:Accent};}  
+  #container #posts .post .chat .even strong {color: {color:Accent};}
+  #container #posts .post .music_player b {color: {color:Accent};}    
+  #container #posts .post .meta span, #container #posts .post .tags span {color: {color:Accent};}
+  #container #posts #disqus_thread a {color: {color:Accent};}
+  #container #posts ol.notes li.tumblelog_{Name} {background-color: {color:Accent}; background-image: url("http://static.tumblr.com/3driglx/xlWm82qu3/pm8kf.png"); background-position: 0 -32px; background-repeat: repeat-x; border: 1px solid {color:Accent}; color: #fff; text-shadow: -1px -1px 1px rgba(0,0,0,0.12);}
+  #container #posts ol.notes li a {color: {color:Accent};}
+  #container #posts ol.notes li.tumblelog_{Name} a {color: #fff;}
+  #container #posts ol.notes li.tumblelog_{Name} a:hover {color: #303030!important;}
+  #container #posts .show_pagination {{block:IndexPage}{block:ifNotInfinitescrollingonindexpage}display: block;{/block:ifNotInfinitescrollingonindexpage}{block:ifInfinitescrollingonindexpage}display: none;{/block:ifInfinitescrollingonindexpage}{/block:IndexPage}{block:TagPage}display: none;{/block:TagPage}{block:SearchPage}display: none;{/block:SearchPage}{block:DayPage}display: none;{/block:DayPage}{block:PermalinkPage}display: block;{/block:PermalinkPage}}
+  #container #posts #pagination a:hover, #pagination span.current_page, #container #posts #credit a:hover, #credit2 a:hover {background-color: {color:Accent}; border: 1px solid {color:Accent};}
+  #container #posts #credit a.top {{block:Posts}{block:Date}display: inline-block!important;{/block:Date}{/block:Posts}}
+  #container #sidebar {{block:Posts}{block:Date}display: block!important;{/block:Date}{/block:Posts}}
+  #container #sidebar a {color: {color:Accent};}
+  #container #sidebar #pages a {background-color: {color:Accent};  border: 1px solid {color:Accent};}
+  #container #sidebar .section form input.search {{block:English}width: 150px!important;{/block:English}{block:German}width: 148px!important;{/block:German}{block:French}width: 129px!important;{/block:French}{block:Italian}width: 157px!important;{/block:Italian}{block:Japanese}width: 165px!important;{/block:Japanese}{block:Turkish}width: 153px!important;{/block:Turkish}{block:Spanish}width: 150px!important;{/block:Spanish}{block:Russian}width: 155px!important;{/block:Russian}{block:Polish}width: 153px!important;{/block:Polish}{block:Dutch}width: 149px!important;{/block:Dutch}}
+  #container #sidebar .section #iesearch form input.search {{block:English}width: 156px!important;{/block:English}{block:German}width: 153px!important;{/block:German}{block:French}width: 135px!important;{/block:French}{block:Italian}width: 163px!important;{/block:Italian}{block:Japanese}width: 172px!important;{/block:Japanese}{block:Turkish}width: 159px!important;{/block:Turkish}{block:Spanish}width: 156px!important;{/block:Spanish}{block:Russian}width: 160px!important;{/block:Russian}{block:Polish}width: 159px!important;{/block:Polish}{block:Dutch}width: 155px!important;{/block:Dutch}}
+  @media screen and (-webkit-min-device-pixel-ratio:0) {#container #sidebar .section form input.search {{block:English}width: 156px!important;{/block:English}{block:German}width: 154px!important;{/block:German}{block:French}width: 135px!important;{/block:French}{block:Italian}width: 163px!important;{/block:Italian}{block:Japanese}width: 171px!important;{/block:Japanese}{block:Turkish}width: 159px!important;{/block:Turkish}{block:Spanish}width: 156px!important;{/block:Spanish}{block:Russian}width: 161px!important;{/block:Russian}{block:Polish}width: 179px!important;{/block:Polish}{block:Dutch}width: 155px!important;{/block:Dutch}}}
+  #container #sidebar .section form input.submit {background-color: {color:Accent}; border: 1px solid {color:Accent};}
+  #container #sidebar .section #group_members {margin: {block:IndexPage}13px 0 0 0{/block:IndexPage}{block:PermalinkPage}4px 0 0 0{/block:PermalinkPage};}
+  @media only screen and (max-width: {block:IndexPage}{block:ifShowshareandtweetlinks}1002px{/block:ifShowshareandtweetlinks}{block:ifNotShowshareandtweetlinks}902px{/block:ifNotShowshareandtweetlinks}{/block:IndexPage}{block:PermalinkPage}{block:ifShowshareandtweetlinks}1002px{/block:ifShowshareandtweetlinks}{block:ifNotShowshareandtweetlinks}902px{/block:ifNotShowshareandtweetlinks}{/block:PermalinkPage}) {#container {width: 778px!important;} #container #header img {max-width: 738px;} #container #posts {width: 778px!important; {block:Posts}{block:Date}width: 540px!important;{/block:Date}{/block:Posts}} #container #posts #tag_search .body, #container #posts .post .body {width: 738px!important; {block:Posts}{block:Date}width: 500px!important;{/block:Date}{/block:Posts}} #container #sidebar {width: 218px!important;} #container #sidebar .section img, #container #sidebar .section embed, #container #sidebar .section object, #container #sidebar .section iframe {max-width: 182px!important;} #container #sidebar #pages {width: 223px!important;} #container #sidebar .section #instagram, #container #sidebar .section #flickr, #container #sidebar .section #following {width: 186px!important;} #container #sidebar .section #group_members .group_member_info {width: 138px!important;}#container #sidebar .section form input.search {{block:English}width: 98px!important;{/block:English}{block:German}width: 96px!important;{/block:German}{block:French}width: 77px!important;{/block:French}{block:Italian}width: 105px!important;{/block:Italian}{block:Japanese}width: 113px!important;{/block:Japanese}{block:Turkish}width: 101px!important;{/block:Turkish}{block:Spanish}width: 98px!important;{/block:Spanish}{block:Russian}width: 103px!important;{/block:Russian}{block:Polish}width: 101px!important;{/block:Polish}{block:Dutch}width: 97px!important;{/block:Dutch}} #container #sidebar .section #iesearch form input.search {{block:English}width: 94px!important;{/block:English}{block:German}width: 91px!important;{/block:German}{block:French}width: 73px!important;{/block:French}{block:Italian}width: 101px!important;{/block:Italian}{block:Japanese}width: 110px!important;{/block:Japanese}{block:Turkish}width: 97px!important;{/block:Turkish}{block:Spanish}width: 94px!important;{/block:Spanish}{block:Russian}width: 98px!important;{/block:Russian}{block:Polish}width: 96px!important;{/block:Polish}{block:Dutch}width: 93px!important;{/block:Dutch}}}
+    @media screen and (-webkit-min-device-pixel-ratio:0) and (max-width: {block:IndexPage}{block:ifShowshareandtweetlinks}1002px{/block:ifShowshareandtweetlinks}{block:ifNotShowshareandtweetlinks}902px{/block:ifNotShowshareandtweetlinks}{/block:IndexPage}{block:PermalinkPage}{block:ifShowshareandtweetlinks}1002px{/block:ifShowshareandtweetlinks}{block:ifNotShowshareandtweetlinks}902px{/block:ifNotShowshareandtweetlinks}{/block:PermalinkPage}) {#container #sidebar .section form input.search {{block:English}width: 94px!important;{/block:English}{block:German}width: 92px!important;{/block:German}{block:French}width: 73px!important;{/block:French}{block:Italian}width: 101px!important;{/block:Italian}{block:Japanese}width: 109px!important;{/block:Japanese}{block:Turkish}width: 97px!important;{/block:Turkish}{block:Spanish}width: 94px!important;{/block:Spanish}{block:Russian}width: 99px!important;{/block:Russian}{block:Polish}width: 97px!important;{/block:Polish}{block:Dutch}width: 93px!important;{/block:Dutch}}}
+  @media only screen and (max-width: {block:IndexPage}{block:ifShowshareandtweetlinks}941px{/block:ifShowshareandtweetlinks}{block:ifNotShowshareandtweetlinks}841px{/block:ifNotShowshareandtweetlinks}{/block:IndexPage}{block:PermalinkPage}{block:ifShowshareandtweetlinks}941px{/block:ifShowshareandtweetlinks}{block:ifNotShowshareandtweetlinks}841px{/block:ifNotShowshareandtweetlinks}{/block:PermalinkPage}) {#container {width: 678px!important;} #container #header img {max-width: 638px;} #container #posts {width: 678px!important; {block:Posts}{block:Date}width: 440px!important;{/block:Date}{/block:Posts}} #container #posts #loading, #container #posts #credit2 {margin: 0 0 0 460px!important;} #container #posts #tag_search .body, #container #posts .post .body {width: 638px!important; {block:Posts}{block:Date}width: 400px!important;{/block:Date}{/block:Posts}} #container #posts .post img {max-width: 400px!important;} #container #posts .post .photoset400 {display: block!important;} #container #posts .post .photoset500 {display: none;} #container #posts .post .videos embed, #container #posts .post .videos object, #container #posts .post .videos iframe {min-height: 150px; width: 400px!important;} #container #posts .post .music_player .music_box {width: 283px!important;} #container #posts .post .track_name .music_box {width: 241px!important;} #container #posts .post .track_name_and_artist .music_box {width: 199px!important;} #container #posts .post .track_name_and_artist_and_album .music_box {width: 157px!important;} #container #posts .post .music_player .track_info {width: 267px!important;} #container #posts .post .track_name .track_info {width: 225px!important;} #container #posts .post .track_name_and_artist .track_info {width: 183px!important;} #container #posts .post .track_name_and_artist_and_album .track_info {width: 141px!important;} {block:GroupMembers}#container #posts .post .meta .hide_comment {display: none;}{/block:GroupMembers} #container #posts #txtarea {width: 170px!important;} #container #posts #pagination .hide_pagi {display: none!important;}}
+  @media only screen and (max-width: {block:IndexPage}{block:ifShowshareandtweetlinks}837px{/block:ifShowshareandtweetlinks}{block:ifNotShowshareandtweetlinks}737px{/block:ifNotShowshareandtweetlinks}{/block:IndexPage}{block:PermalinkPage}{block:ifShowshareandtweetlinks}837px{/block:ifShowshareandtweetlinks}{block:ifNotShowshareandtweetlinks}737px{/block:ifNotShowshareandtweetlinks}{/block:PermalinkPage}) {#container {width: 440px!important;} #container #header img {max-width: 400px;} #container .nivoSlider .nivo-caption {display: none!important;} #container ul#navigation {display: none!important;} #container form#navigation {display: block!important;} #container #posts {width: 440px!important; {block:Posts}{block:Date}width: 440px!important;{/block:Date}{/block:Posts}} #container #posts #tag_search .body, #container #posts .post .body {width: 400px!important; {block:Posts}{block:Date}width: 400px!important;{/block:Date}{/block:Posts}} #container #sidebar {display: none!important;}}
+  @media screen and (max-width: {block:IndexPage}{block:ifShowshareandtweetlinks}{block:ifNotInfinitescrollingonindexpage}600px{/block:ifNotInfinitescrollingonindexpage}{/block:ifShowshareandtweetlinks}{block:ifShowshareandtweetlinks}{block:ifInfinitescrollingonindexpage}665px{/block:ifInfinitescrollingonindexpage}{/block:ifShowshareandtweetlinks}{block:ifNotInfinitescrollingonindexpage}{block:ifNotShowshareandtweetlinks}500px{/block:ifNotShowshareandtweetlinks}{/block:ifNotInfinitescrollingonindexpage}{block:ifInfinitescrollingonindexpage}{block:ifNotShowshareandtweetlinks}665px{/block:ifNotShowshareandtweetlinks}{/block:ifInfinitescrollingonindexpage}{/block:IndexPage}{block:PermalinkPage}{block:ifShowshareandtweetlinks}{block:ifNotInfinitescrollingonindexpage}600px{/block:ifNotInfinitescrollingonindexpage}{/block:ifShowshareandtweetlinks}{block:ifShowshareandtweetlinks}{block:ifInfinitescrollingonindexpage}665px{/block:ifInfinitescrollingonindexpage}{/block:ifShowshareandtweetlinks}{block:ifNotInfinitescrollingonindexpage}{block:ifNotShowshareandtweetlinks}500px{/block:ifNotShowshareandtweetlinks}{/block:ifNotInfinitescrollingonindexpage}{block:ifInfinitescrollingonindexpage}{block:ifNotShowshareandtweetlinks}665px{/block:ifNotShowshareandtweetlinks}{/block:ifInfinitescrollingonindexpage}{/block:PermalinkPage}) {#container {width: 290px!important;} #container #header img {max-width: 250px;} #container form#navigation select {width: 258px;} #container #posts {width: 290px!important; {block:Posts}{block:Date}width: 290px!important;{/block:Date}{/block:Posts}} #container #posts #loading, #container #posts #credit2 {margin: 0 0 0 310px!important;} #container #posts #tag_search .body, #container #posts .post .body {width: 250px!important; {block:Posts}{block:Date}width: 250px!important;{/block:Date}{/block:Posts}} #container #posts .post img {max-width: 250px!important;} #container #posts .post .photoset400 {display: none!important;} #container #posts .post .photoset250 {display: block!important;} #container #posts .post .videos embed, #container #posts .post .videos object, #container #posts .post .videos iframe {max-height: 200px; width: 250px!important;} #container #posts .post .music_player {height: 303px!important;} #container #posts .post .track_name {height: 345px!important;} #container #posts .post .track_name_and_artist {height: 387px!important;} #container #posts .post .track_name_and_artist_and_album {height: 429px!important;} #container #posts .post .music_player .album_art, #container #posts .post .music_player .album_art img {height: 204px!important; width: 204px!important;} #container #posts .post .music_player .album_art .no_art {font: normal 104px/104px ModernPictogramsNormal!important; margin-left: -47px!important; margin-top: -71px!important;} #container #posts .post .music_player .music_box {margin: 10px 0 0 0; width: 216px!important;} #container #posts .post .music_player .track_info {width: 200px!important;} #container #posts .post .meta {margin-bottom: 2px!important;} #container #posts .post .meta .hide_comment, #container #posts .post .meta .hide_member, #container #posts .post .meta .hide_download, #container #posts .post .meta .hide_sources {display: none;} #container #posts .post .tags {display: none!important;} {block:Posts}{block:Date}#container #posts #credit {display: none!important;}{/block:Date}{/block:Posts}}
+  @media only screen and (max-width: {block:IndexPage}{block:ifShowshareandtweetlinks}{block:ifNotInfinitescrollingonindexpage}455px{/block:ifNotInfinitescrollingonindexpage}{/block:ifShowshareandtweetlinks}{block:ifShowshareandtweetlinks}{block:ifInfinitescrollingonindexpage}515px{/block:ifInfinitescrollingonindexpage}{/block:ifShowshareandtweetlinks}{block:ifNotInfinitescrollingonindexpage}{block:ifNotShowshareandtweetlinks}465px{/block:ifNotShowshareandtweetlinks}{/block:ifNotInfinitescrollingonindexpage}{block:ifInfinitescrollingonindexpage}{block:ifNotShowshareandtweetlinks}515px{/block:ifNotShowshareandtweetlinks}{/block:ifInfinitescrollingonindexpage}{/block:IndexPage}{block:PermalinkPage}{block:ifShowshareandtweetlinks}{block:ifNotInfinitescrollingonindexpage}455px{/block:ifNotInfinitescrollingonindexpage}{/block:ifShowshareandtweetlinks}{block:ifShowshareandtweetlinks}{block:ifInfinitescrollingonindexpage}515px{/block:ifInfinitescrollingonindexpage}{/block:ifShowshareandtweetlinks}{block:ifNotInfinitescrollingonindexpage}{block:ifNotShowshareandtweetlinks}465px{/block:ifNotShowshareandtweetlinks}{/block:ifNotInfinitescrollingonindexpage}{block:ifInfinitescrollingonindexpage}{block:ifNotShowshareandtweetlinks}515px{/block:ifNotShowshareandtweetlinks}{/block:ifInfinitescrollingonindexpage}{/block:PermalinkPage}) {#container #posts #loading, #container #posts #credit2 {display: none!important;} #container #posts .post .share_links {display: none!important;}}
+  @media only screen and (max-device-width: 480px) {#container #header, #container #posts #disqus_thread, #container #posts #share, iframe#tumblr_controls {display: none!important;}}
+  {CustomCSS}
+  </style>
+</head>
+
+<body>
+<div id="container">
+  {block:ifHeaderoneimage}
+    <div id="header">
+      <div id="loading_header">&nbsp;</div>
+      <div class="slider-wrapper"><div id="slider" class="nivoSlider">{block:ifHeaderoneimagelink}<a href="{text:Header one image link}">{/block:ifHeaderoneimagelink}<img src="{image:Header one}" alt="{image:Header one}"{block:ifHeaderoneimagecaption} title="#htmlcaptionone"{/block:ifHeaderoneimagecaption} />{block:ifHeaderoneimagelink}</a>{/block:ifHeaderoneimagelink}{block:ifHeadertwoimage}{block:ifHeadertwoimagelink}<a href="{text:Header two image link}">{/block:ifHeadertwoimagelink}<img src="{image:Header two}" alt="{image:Header two}"{block:ifHeadertwoimagecaption} title="#htmlcaptiontwo"{/block:ifHeadertwoimagecaption} />{block:ifHeadertwoimagelink}</a>{/block:ifHeadertwoimagelink}{/block:ifHeadertwoimage}{block:ifHeaderthreeimage}{block:ifHeaderthreeimagelink}<a href="{text:Header three image link}">{/block:ifHeaderthreeimagelink}<img src="{image:Header three}" alt="{image:Header three}"{block:ifHeaderthreeimagecaption} title="#htmlcaptionthree"{/block:ifHeaderthreeimagecaption} />{block:ifHeaderthreeimagelink}</a>{/block:ifHeaderthreeimagelink}{/block:ifHeaderthreeimage}{block:ifHeaderfourimage}{block:ifHeaderfourimagelink}<a href="{text:Header four image link}">{/block:ifHeaderfourimagelink}<img src="{image:Header four}" alt="{image:Header four}"{block:ifHeaderfourimagecaption} title="#htmlcaptionfour"{/block:ifHeaderfourimagecaption} />{block:ifHeaderfourimagelink}</a>{/block:ifHeaderfourimagelink}{/block:ifHeaderfourimage}{block:ifHeaderfiveimage}{block:ifHeaderfiveimagelink}<a href="{text:Header five image link}">{/block:ifHeaderfiveimagelink}<img src="{image:Header five}" alt="{image:Header five}"{block:ifHeaderfiveimagecaption} title="#htmlcaptionfive"{/block:ifHeaderfiveimagecaption} />{block:ifHeaderfiveimagelink}</a>{/block:ifHeaderfiveimagelink}{/block:ifHeaderfiveimage}</div></div>
+    </div><!-- end #header -->
+
+    {block:ifHeaderoneimagecaption}<div id="htmlcaptionone" class="nivo-html-caption">{text:Header one image caption}</div>{/block:ifHeaderoneimagecaption}{block:ifHeadertwoimage}{block:ifHeadertwoimagecaption}<div id="htmlcaptiontwo" class="nivo-html-caption">{text:Header two image caption}</div>{/block:ifHeadertwoimagecaption}{/block:ifHeadertwoimage}{block:ifHeaderthreeimage}{block:ifHeaderthreeimagecaption}<div id="htmlcaptionthree" class="nivo-html-caption">{text:Header three image caption}</div>{/block:ifHeaderthreeimagecaption}{/block:ifHeaderthreeimage}{block:ifHeaderfourimage}{block:ifHeaderfourimagecaption}<div id="htmlcaptionfour" class="nivo-html-caption">{text:Header four image caption}</div>{/block:ifHeaderfourimagecaption}{/block:ifHeaderfourimage}{block:ifHeaderfiveimage}{block:ifHeaderfiveimagecaption}<div id="htmlcaptionfive" class="nivo-html-caption">{text:Header five image caption}</div>{/block:ifHeaderfiveimagecaption}{/block:ifHeaderfiveimage}
+  {/block:ifHeaderoneimage}
+
+  <ul id="navigation">
+    <li><a href="/">{Name}</a></li> {block:IfShowArchiveLink}<li class="spacer">&nbsp;</li><li><a href="/archive">{lang:Archive}</a></li>{/block:IfShowArchiveLink} {block:ifShowRSSFeedLink}<li class="spacer">&nbsp;</li><li><a href="{RSS}">{lang:RSS Feed}</a></li>{/block:ifShowRSSFeedLink} {block:ifShowRandomLink}<li class="spacer">&nbsp;</li><li><a href="/random">{lang:Random}</a></li>{/block:ifShowRandomLink} {block:AskEnabled}<li class="spacer">&nbsp;</li><li><a href="/ask">{block:English}Ask{/block:English}{block:German}Fragen{/block:German}{block:French}Demandez{/block:French}{block:Italian}Chiedere{/block:Italian}{block:Japanese}頼む{/block:Japanese}{block:Turkish}Sormak{/block:Turkish}{block:Spanish}Pedir{/block:Spanish}{block:Russian}просить{/block:Russian}{block:Polish}Zapytać{/block:Polish}{block:Portuguese}Perguntar{/block:Portuguese}{block:Dutch}Vragen{/block:Dutch}</a></li>{/block:AskEnabled} {block:SubmissionsEnabled}<li class="spacer">&nbsp;</li><li><a href="/submit">{block:English}Submit{/block:English}{block:German}Einreichen{/block:German}{block:French}Soumettre{/block:French}{block:Italian}Presentare{/block:Italian}{block:Japanese}提出する{/block:Japanese}{block:Turkish}Sunmak{/block:Turkish}{block:Spanish}Presentar{/block:Spanish}{block:Russian}представлять{/block:Russian}{block:Polish}Prześlij{/block:Polish}{block:Portuguese}Submeter{/block:Portuguese}{block:Dutch}Voorleggen{/block:Dutch}</a></li>{/block:SubmissionsEnabled} {block:ifCustomlink1title}<li class="spacer">&nbsp;</li><li><a href="{text:Custom link 1 URL}">{text:Custom link 1 title}</a></li>{/block:ifCustomlink1title} {block:ifCustomlink2title}<li class="spacer">&nbsp;</li><li><a href="{text:Custom link 2 URL}">{text:Custom link 2 title}</a></li>{/block:ifCustomlink2title} {block:ifCustomlink3title}<li class="spacer">&nbsp;</li><li><a href="{text:Custom link 3 URL}">{text:Custom link 3 title}</a></li>{/block:ifCustomlink3title} {block:ifCustomlink4title}<li class="spacer">&nbsp;</li><li><a href="{text:Custom link 4 URL}">{text:Custom link 4 title}</a></li>{/block:ifCustomlink4title}
+    <div class="clear"></div>
+  </ul><!-- end #navigation -->
+
+  <!--[if IE]><div id="ienav"><![endif]-->
+  <form id="navigation" action="../">
+    <select onchange="window.open(this.options[this.selectedIndex].value,'_top')">
+      <option value="/">Navigation...</option>
+      <option value="/">{lang:Home}</option>
+      {block:IfShowArchiveLink}<option value="/archive">{lang:Archive}</option>{/block:IfShowArchiveLink}
+      {block:IfShowRSSfeedlink}<option value="{RSS}">{lang:RSS Feed}</option>{/block:IfShowRSSfeedlink}
+      {block:IfShowrandomlink}<option value="/random">{lang:Random}</option>{/block:IfShowrandomlink}
+      {block:AskEnabled}<option value="/ask">{block:English}Ask{/block:English}{block:German}Fragen{/block:German}{block:French}Demandez{/block:French}{block:Italian}Chiedere{/block:Italian}{block:Japanese}頼む{/block:Japanese}{block:Turkish}Sormak{/block:Turkish}{block:Spanish}Pedir{/block:Spanish}{block:Russian}просить{/block:Russian}{block:Polish}Zapytać{/block:Polish}{block:Portuguese}Perguntar{/block:Portuguese}{block:Dutch}Vragen{/block:Dutch}</option></li>{/block:AskEnabled}
+      {block:SubmissionsEnabled}<option value="/submit">{block:English}Submit{/block:English}{block:German}Einreichen{/block:German}{block:French}Soumettre{/block:French}{block:Italian}Presentare{/block:Italian}{block:Japanese}提出する{/block:Japanese}{block:Turkish}Sunmak{/block:Turkish}{block:Spanish}Presentar{/block:Spanish}{block:Russian}представлять{/block:Russian}{block:Polish}Prześlij{/block:Polish}{block:Portuguese}Submeter{/block:Portuguese}{block:Dutch}Voorleggen{/block:Dutch}</option>{/block:SubmissionsEnabled}
+      {block:Pages}<option value="{URL}">{Label}</option>{/block:Pages}
+      {block:ifCustomlink1title}<option value="{text:Custom link 1 URL}">{text:Custom link 1 title}</option>{/block:ifCustomlink1title}
+      {block:ifCustomlink2title}<option value="{text:Custom link 2 URL}">{text:Custom link 2 title}</option>{/block:ifCustomlink2title}
+      {block:ifCustomlink3title}<option value="{text:Custom link 3 URL}">{text:Custom link 3 title}</option>{/block:ifCustomlink3title} 
+      {block:ifCustomlink4title}<option value="{text:Custom link 4 URL}">{text:Custom link 4 title}</option>{/block:ifCustomlink4title}
+    </select>
+  </form>
+  <!--[if IE]></div><![endif]-->
+
+  <div id="posts">
+    {block:IndexPage}
+      {block:ifInfinitescrollingonindexpage}
+        <div id="credit2">
+          <a href="#navigation" class="top">{block:English}Top{/block:English}{block:German}Top{/block:German}{block:French}Haut{/block:French}{block:Italian}Top{/block:Italian}{block:Japanese}トップ{/block:Japanese}{block:Turkish}Üst{/block:Turkish}{block:Spanish}Superior{/block:Spanish}{block:Russian}топ{/block:Russian}{block:Polish}Top{/block:Polish}{block:Portuguese}Topo{/block:Portuguese}{block:Dutch}Top{/block:Dutch}</a>
+          <a href="http://anthagio.tumblr.com/themocracy" class="credit">{block:English}Install{/block:English}{block:German}Installieren{/block:German}{block:French}Installer{/block:French}{block:Italian}Installare{/block:Italian}{block:Japanese}インストール{/block:Japanese}{block:Turkish}Kurmak{/block:Turkish}{block:Spanish}Instalar{/block:Spanish}{block:Russian}Yстанавливать{/block:Russian}{block:Polish}Zainstalować{/block:Polish}{block:Portuguese}Instalar{/block:Portuguese}{block:Dutch}Installeren{/block:Dutch}</a>
+          <a href="http://anthagio.tumblr.com" class="credit">Anthagio</a>
+        </div><!-- end #credit -->
+      {/block:ifInfinitescrollingonindexpage}
+    {/block:IndexPage}
+
+    {block:SearchPage}<div id="tag_search"><div class="body"><div class="title{block:NoSearchResults} nosearchresults{/block:NoSearchResults}">{lang:Found SearchResultCount results for SearchQuery 2}{block:NoSearchResults}{lang:Sorry no search results found}{/block:NoSearchResults}.</div></div></div>{/block:SearchPage}{block:TagPage}<div id="tag_search"><div class="body"><div class="title">{lang:Posts tagged Tag 2}.</div></div></div>{/block:TagPage}{block:DayPage}<div id="tag_search"><div class="body"><div class="title">{lang:Viewing everything posted on Month DayOfMonth Year}.</div></div></div>{/block:DayPage}
+
+    {block:ifInfinitescrollingonindexpage}<div id="all_posts">{/block:ifInfinitescrollingonindexpage}
+      {block:Posts}
+        <div class="post">
+          {block:IndexPage}{block:ifShowshareandtweetlinks}<div class="share_links"><a href="http://www.facebook.com/sharer.php?u={Permalink}" onclick="return popitup('http://www.facebook.com/sharer.php?u={Permalink}')" title="Click to share on Facebook!">G</a><a href="http://twitter.com/home?status=Check out this post from {Name} on Tumblr: {ShortURL}{block:Twitter} via @{TwitterUsername}{/block:Twitter}" onclick="return popitup('http://twitter.com/home?status=Check out this post from {Name} on Tumblr: {ShortURL}{block:Twitter} via @{TwitterUsername}{/block:Twitter}')" title="Click to share on Twitter!">U</a></div>{/block:ifShowshareandtweetlinks}{/block:IndexPage}
+
+          <div class="body">
+            {block:Text}
+              {block:Title}<div class="title">{Title}</div>{/block:Title}
+              {Body}
+            {/block:Text}
+
+            {block:Photo}
+              <div class="media">
+                {block:HighRes}<a class="zoom" {block:Exif}title="{block:Camera}<b>{block:English}Camera{/block:English}{block:German}Kamera{/block:German}{block:French}Caméra{/block:French}Telecamera{block:Italian}{/block:Italian}{block:Japanese}カメラ{/block:Japanese}{block:Turkish}Kamera{/block:Turkish}{block:Spanish}Cámara{/block:Spanish}{block:Russian}камера{/block:Russian}{block:Polish}Kamera{/block:Polish}{block:Portuguese}Câmera{/block:Portuguese}{block:Dutch}Camera{/block:Dutch}:</b> {Camera}{/block:Camera}{block:Aperture} <b>{block:English}Aperture{/block:English}{block:German}Öffnung{/block:German}{block:French}Ouverture{/block:French}{block:Italian}Apertura{/block:Italian}{block:Japanese}アパーチャ{/block:Japanese}{block:Turkish}Açıklık{/block:Turkish}{block:Spanish}Abertura{/block:Spanish}{block:Russian}Aпертура{/block:Russian}{block:Polish}Apertura{/block:Polish}Abertura{block:Portuguese}{/block:Portuguese}{block:Dutch}Opening{/block:Dutch}:</b> {Aperture}{/block:Aperture}{block:Exposure} <b>{block:English}Exposure{/block:English}{block:German}Belichtung{/block:German}{block:French}Exposition{/block:French}{block:Italian}Esposizione{/block:Italian}{block:Japanese}露光{/block:Japanese}{block:Turkish}Maruz Kalma{/block:Turkish}{block:Spanish}Exposición{/block:Spanish}{block:Russian}экспозиция{/block:Russian}{block:Polish}Ekspozycja{/block:Polish}{block:Portuguese}Exposição{/block:Portuguese}{block:Dutch}Blootstelling{/block:Dutch}:</b> {Exposure}{/block:Exposure}{block:FocalLength} <b>{block:English}Focal Length{/block:English}{block:German}Brennweite{/block:German}{block:French}Distance Focale{/block:French}{block:Italian}Focale{/block:Italian}{block:Japanese}焦点距離{/block:Japanese}{block:Turkish}Odak Uzunluğu{/block:Turkish}{block:Spanish}Longitud Focal{/block:Spanish}{block:Russian}фокусное расстояние{/block:Russian}{block:Polish}Ogniskowa{/block:Polish}{block:Portuguese}Distância Focal{/block:Portuguese}{block:Dutch}Focus Afstand{/block:Dutch}:</b> {FocalLength}{/block:FocalLength}" {/block:Exif}href="{PhotoURL-HighRes}?.jpg">y</a>{/block:HighRes}
+                {LinkOpenTag}<img src="{PhotoURL-500}" alt="{PhotoAlt}" />{LinkCloseTag}
+              </div><!-- end .media -->
+
+              {block:Caption}<div class="caption">{Caption}</div>{/block:Caption}
+            {/block:Photo}
+
+            {block:Photoset}
+              <div class="media photoset500">{Photoset-500}</div><div class="media photoset400">{Photoset-400}</div><div class="media photoset250">{Photoset-250}</div>
+              {block:Caption}<div class="caption">{Caption}</div>{/block:Caption}
+            {/block:Photoset}
+
+            {block:Quote}
+              <div class="title">"{Quote}"</div>
+              {block:Source}<p>&mdash; <b>{Source}</b></p>{/block:Source}
+            {/block:Quote}
+
+            {block:Link}
+              <div class="title"><a href="{URL}">{Name} &rarr;</a></div>
+              {block:Description}{Description}{/block:Description}
+            {/block:Link}
+
+            {block:Chat}
+              {block:Title}<div class="title">{Title}</div>{/block:Title}
+              <div class="chat">{block:Lines}<div class="{Alt}">{block:Label}<strong>{Label}</strong>{/block:Label} {Line}</div>{/block:Lines}</div>
+            {/block:Chat}
+
+            {block:Audio}
+              <div class="music_player{block:TrackName} track_name{/block:TrackName}{block:Artist} track_name{/block:Artist}{block:Album} track_name{/block:Album}{block:Artist}{block:TrackName} track_name_and_artist{/block:TrackName}{/block:Artist}{block:TrackName}{block:Album} track_name_and_artist{/block:Album}{/block:TrackName}{block:Album}{block:Artist} track_name_and_artist{/block:Artist}{/block:Album}{block:TrackName}{block:Artist}{block:Album} track_name_and_artist_and_album{/block:Album}{/block:Artist}{/block:TrackName}">
+                <div class="album_art">
+                  <div class="no_art">2</div>
+                  {block:AlbumArt}<img src="{AlbumArtURL}" alt="{AlbumArtURL}" />{/block:AlbumArt}
+                </div><!-- end .album_art -->
+
+                <div class="music_box" id="{PostID}">{block:ifWhiteaudioplayer}{block:ifNotBlackaudioplayer}{block:ifNotGreyaudioplayer}{AudioPlayerWhite}{/block:ifNotGreyaudioplayer}{/block:ifNotBlackaudioplayer}{/block:ifWhiteaudioplayer}{block:ifBlackaudioplayer}{block:ifNotWhiteaudioplayer}{block:ifNotGreyaudioplayer}{AudioPlayerBlack}{/block:ifNotGreyaudioplayer}{/block:ifNotWhiteaudioplayer}{/block:ifBlackaudioplayer}{block:ifGreyaudioplayer}{block:ifNotWhiteaudioplayer}{block:ifNotBlackaudioplayer}{AudioPlayerGrey}{/block:ifNotBlackaudioplayer}{/block:ifNotWhiteaudioplayer}{/block:ifGreyaudioplayer}</div>
+                <div class="track_info"><b>{lang:Plays}:</b> {FormattedPlayCount}</div>             
+                {block:TrackName}<div class="track_info"><b>{block:English}Song{/block:English}{block:German}Song{/block:German}{block:French}Chanson{/block:French}{block:Italian}Canzone{/block:Italian}{block:Japanese}歌{/block:Japanese}{block:Turkish}Şarkı{/block:Turkish}{block:Spanish}Canción{/block:Spanish}{block:Russian}песня{/block:Russian}{block:Polish}Piosenka{/block:Polish}{block:Portuguese}Canção{/block:Portuguese}{block:Dutch}Lied{/block:Dutch}:</b> {TrackName}</div>{/block:TrackName}
+                {block:Artist}<div class="track_info"><b>{block:English}Artist{/block:English}{block:German}Künstler{/block:German}{block:French}Artiste{/block:French}{block:Italian}Artista{/block:Italian}{block:Japanese}アーティスト{/block:Japanese}{block:Turkish}Sanatçı{/block:Turkish}{block:Spanish}Artista{/block:Spanish}{block:Russian}Xудожник{/block:Russian}{block:Polish}Artysta{/block:Polish}{block:Portuguese}Artista{/block:Portuguese}{block:Dutch}Kunstenaar{/block:Dutch}:</b> {Artist}</div>{/block:Artist}
+                {block:Album}<div class="track_info"><b>{block:English}Album{/block:English}{block:German}Album{/block:German}{block:French}Album{/block:French}{block:Italian}Album{/block:Italian}{block:Japanese}アルバム{/block:Japanese}{block:Turkish}Albüm{/block:Turkish}{block:Spanish}Álbum{/block:Spanish}{block:Russian}Aльбом{/block:Russian}{block:Polish}Album{/block:Polish}{block:Portuguese}{/block:Portuguese}{block:Dutch}Album{/block:Dutch}:</b> {Album}</div>{/block:Album}
+                <div class="clear"></div>
+              </div><!-- end .music_player -->
+
+              {block:Caption}<div class="audio_caption">{Caption}</div>{/block:Caption}
+            {/block:Audio}
+
+            {block:Video}
+              <div class="videos"  id="{PostID}">{Video-500}</div>
+              {block:Caption}<div class="caption">{Caption}</div>{/block:Caption}
+            {/block:Video}
+
+            {block:Answer}
+              <div class="title">{Question} &mdash; <b>{Asker}</b></div>
+              {Answer}
+            {/block:Answer}
+
+            {block:Date}
+              <div class="meta{block:HasTags} meta_with_tags{/block:HasTags}"><span>Z</span> <a href="{block:IndexPage}{Permalink}{/block:IndexPage}{block:PermalinkPage}/day/{Year}/{MonthNumberWithZero}/{DayofMonth}/{/block:PermalinkPage}">{block:IndexPage}{TimeAgo}{/block:IndexPage}{block:PermalinkPage}{Month} {DayOfMonth}{DayOfMonthSuffix}, {Year}{/block:PermalinkPage}</a> <span class="left_notes">j</span> <a  class="left_notes" href="{Permalink}">{NoteCount}</a> {block:IndexPage}{block:GroupMembers}<span class="hide_member">f</span> <a class="hide_member" href="{PostAuthorURL}" title="{PostAuthorTitle}"><span class="post_author">{PostAuthorName}</span></a>{/block:GroupMembers}{/block:IndexPage} {block:RebloggedFrom}<span class="hide_sources">R</span> <a class="hide_sources" href="{ReblogParentURL}" title="reblogged from {ReblogParentName}">{block:English}Via{/block:English}{block:German}Über{/block:German}{block:French}Via{/block:French}{block:Italian}Via{/block:Italian}{block:Japanese}経由して{/block:Japanese}{block:Turkish}Üzerinden{/block:Turkish}{block:Spanish}Vía{/block:Spanish}{block:Russian}через{/block:Russian}{block:Polish}Przez{/block:Polish}{block:Portuguese}Via{/block:Portuguese}{block:Dutch}Via{/block:Dutch}</a>{/block:RebloggedFrom} {block:ContentSource}<span class="hide_sources">*</span> <a class="hide_sources" href="{SourceURL}">{lang:Source}</a>{/block:ContentSource} {block:ExternalAudio}<span class="hide_download">C</span> <a class="hide_download" href="{ExternalAudioURL}" title="{lang:Download}">{lang:Download}</a>{/block:ExternalAudio} {block:IndexPage}{block:ifDisqusshortname}<span class="hide_comment">b</span> <a class="hide_comment" href="{Permalink}#disqus_thread">{lang:Comment}</a>{/block:ifDisqusshortname}{/block:IndexPage}</div>
+              {block:HasTags}<div class="tags">{block:Tags}<a href="/tagged/{Tag}">{Tag}</a>{/block:Tags}</div>{/block:HasTags}
+            {/block:Date}
+          </div><!-- end .body -->
+        </div><!-- end .post -->
+
+        {block:PermalinkPage}
+          {block:Date}
+            <div id="share"><span st_url='{Permalink}' st_title='{Title}' class='st_sharethis_hcount' displayText='ShareThis'></span><span st_url='{Permalink}' st_title='{Title}' class='st_facebook_hcount' displayText='Facebook'></span><span st_url='{Permalink}' st_title='{Title}' class='st_twitter_hcount' displayText='Tweet'></span><span st_url='{Permalink}' st_title='{Title}' class='st_pinterest_hcount' displayText='Pinterest'></span><span st_url='{Permalink}' st_title='{Title}' class='st_email_hcount' displayText='Email'></span><!--[if IE]><div style="display: block; margin-bottom: 2px;"></div><![endif]--></div>
+            <script type="text/javascript">var switchTo5x=false;</script><script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script><script type="text/javascript">stLight.options({publisher:'20fe5dbd-c398-40d7-a1ee-f2fc7f00e61e'});</script>
+            {block:ifDisqusshortname}<script type="text/javascript">var disqus_url = "{Permalink}"; var disqus_title ="{block:PostTitle}{PostTitle}{/block:PostTitle}";</script><div id="disqus_thread"></div><script type="text/javascript">(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true; dsq.src = 'http://{text:Disqus shortname}.disqus.com/embed.js'; (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script><script type="text/javascript">var disqus_shortname = '{text:Disqus shortname}'; (function () {var s = document.createElement('script'); s.async = true; s.src = 'http://{text:Disqus shortname}.disqus.com/count.js'; (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);}());</script>{/block:ifDisqusshortname}
+          {/block:Date}
+        {/block:PermalinkPage}
+        
+        {block:PostNotes}{PostNotes}{/block:PostNotes}
+      {/block:Posts}
+    {block:ifInfinitescrollingonindexpage}</div><!-- end #all_posts -->{/block:ifInfinitescrollingonindexpage}
+
+    {block:Pagination}<div id="pagination" class="show_pagination">{block:PreviousPage}<a href="{PreviousPage}">{lang:Previous Page}</a>{/block:PreviousPage} {block:NextPage}<a href="{NextPage}">{lang:Next Page}</a>{/block:NextPage}</div>{/block:Pagination}{block:PermalinkPagination}<div id="pagination" class="show_pagination">{block:NextPost}<a href="{NextPost}">{lang:Previous Post}</a>{/block:NextPost} {block:PreviousPost}<a href="{PreviousPost}">{lang:Next Post}</a>{/block:PreviousPost}</div>{/block:PermalinkPagination}{block:DayPagination}{block:Pagination}<div id="pagination">{block:PreviousDayPage}<a href="{PreviousDayPage}">{lang:Previous Day}</a>{/block:PreviousDayPage} {block:NextDayPage}<a href="{NextDayPage}">{lang:Next Day}</a>{/block:NextDayPage}</div> {block:ifInfinitescrollingonindexpage}<div id="credit"><a href="#navigation" class="top">{block:English}Top{/block:English}{block:German}Top{/block:German}{block:French}Haut{/block:French}{block:Italian}Top{/block:Italian}{block:Japanese}トップ{/block:Japanese}{block:Turkish}Üst{/block:Turkish}{block:Spanish}Superior{/block:Spanish}{block:Russian}топ{/block:Russian}{block:Polish}Top{/block:Polish}{block:Portuguese}Topo{/block:Portuguese}{block:Dutch}Top{/block:Dutch}</a> <a href="http://anthagio.tumblr.com/themocracy" class="credit">{block:English}Install{/block:English}{block:German}Installieren{/block:German}{block:French}Installer{/block:French}{block:Italian}Installare{/block:Italian}{block:Japanese}インストール{/block:Japanese}{block:Turkish}Kurmak{/block:Turkish}{block:Spanish}Instalar{/block:Spanish}{block:Russian}Yстанавливать{/block:Russian}{block:Polish}Zainstalować{/block:Polish}{block:Portuguese}Instalar{/block:Portuguese}{block:Dutch}Installeren{/block:Dutch}</a> <a href="http://anthagio.tumblr.com" class="credit">Anthagio</a></div>{/block:ifInfinitescrollingonindexpage}{/block:Pagination}{/block:DayPagination}{block:SearchPage}{block:Pagination}<div id="pagination">{block:PreviousPage}<a href="{PreviousPage}">{lang:Previous Page}</a>{/block:PreviousPage} {block:NextPage}<a href="{NextPage}">{lang:Next Page}</a>{/block:NextPage}</div>{/block:Pagination} {block:ifInfinitescrollingonindexpage}<div id="credit"><a href="#navigation" class="top">{block:English}Top{/block:English}{block:German}Top{/block:German}{block:French}Haut{/block:French}{block:Italian}Top{/block:Italian}{block:Japanese}トップ{/block:Japanese}{block:Turkish}Üst{/block:Turkish}{block:Spanish}Superior{/block:Spanish}{block:Russian}топ{/block:Russian}{block:Polish}Top{/block:Polish}{block:Portuguese}Topo{/block:Portuguese}{block:Dutch}Top{/block:Dutch}</a> <a href="http://anthagio.tumblr.com/themocracy" class="credit">{block:English}Install{/block:English}{block:German}Installieren{/block:German}{block:French}Installer{/block:French}{block:Italian}Installare{/block:Italian}{block:Japanese}インストール{/block:Japanese}{block:Turkish}Kurmak{/block:Turkish}{block:Spanish}Instalar{/block:Spanish}{block:Russian}Yстанавливать{/block:Russian}{block:Polish}Zainstalować{/block:Polish}{block:Portuguese}Instalar{/block:Portuguese}{block:Dutch}Installeren{/block:Dutch}</a> <a href="http://anthagio.tumblr.com" class="credit">Anthagio</a></div>{/block:ifInfinitescrollingonindexpage}{/block:SearchPage}{block:TagPage}{block:Pagination}<div id="pagination">{block:PreviousPage}<a href="{PreviousPage}">{lang:Previous Page}</a>{/block:PreviousPage} {block:NextPage}<a href="{NextPage}">{lang:Next Page}</a>{/block:NextPage}</div>{/block:Pagination} {block:ifInfinitescrollingonindexpage}<div id="credit"><a href="#navigation" class="top">{block:English}Top{/block:English}{block:German}Top{/block:German}{block:French}Haut{/block:French}{block:Italian}Top{/block:Italian}{block:Japanese}トップ{/block:Japanese}{block:Turkish}Üst{/block:Turkish}{block:Spanish}Superior{/block:Spanish}{block:Russian}топ{/block:Russian}{block:Polish}Top{/block:Polish}{block:Portuguese}Topo{/block:Portuguese}{block:Dutch}Top{/block:Dutch}</a> <a href="http://anthagio.tumblr.com/themocracy" class="credit">{block:English}Install{/block:English}{block:German}Installieren{/block:German}{block:French}Installer{/block:French}{block:Italian}Installare{/block:Italian}{block:Japanese}インストール{/block:Japanese}{block:Turkish}Kurmak{/block:Turkish}{block:Spanish}Instalar{/block:Spanish}{block:Russian}Yстанавливать{/block:Russian}{block:Polish}Zainstalować{/block:Polish}{block:Portuguese}Instalar{/block:Portuguese}{block:Dutch}Installeren{/block:Dutch}</a> <a href="http://anthagio.tumblr.com" class="credit">Anthagio</a></div>{/block:ifInfinitescrollingonindexpage}{/block:TagPage}{block:IndexPage}{block:ifNotInfinitescrollingonindexpage}<div id="credit"><a href="#navigation" class="top">{block:English}Top{/block:English}{block:German}Top{/block:German}{block:French}Haut{/block:French}{block:Italian}Top{/block:Italian}{block:Japanese}トップ{/block:Japanese}{block:Turkish}Üst{/block:Turkish}{block:Spanish}Superior{/block:Spanish}{block:Russian}топ{/block:Russian}{block:Polish}Top{/block:Polish}{block:Portuguese}Topo{/block:Portuguese}{block:Dutch}Top{/block:Dutch}</a> <a href="http://anthagio.tumblr.com/themocracy" class="credit">{block:English}Install{/block:English}{block:German}Installieren{/block:German}{block:French}Installer{/block:French}{block:Italian}Installare{/block:Italian}{block:Japanese}インストール{/block:Japanese}{block:Turkish}Kurmak{/block:Turkish}{block:Spanish}Instalar{/block:Spanish}{block:Russian}Yстанавливать{/block:Russian}{block:Polish}Zainstalować{/block:Polish}{block:Portuguese}Instalar{/block:Portuguese}{block:Dutch}Installeren{/block:Dutch}</a> <a href="http://anthagio.tumblr.com" class="credit">Anthagio</a></div>{/block:ifNotInfinitescrollingonindexpage}{/block:IndexPage}{block:PermalinkPage}<div id="credit"><a href="#navigation" class="top">{block:English}Top{/block:English}{block:German}Top{/block:German}{block:French}Haut{/block:French}{block:Italian}Top{/block:Italian}{block:Japanese}トップ{/block:Japanese}{block:Turkish}Üst{/block:Turkish}{block:Spanish}Superior{/block:Spanish}{block:Russian}топ{/block:Russian}{block:Polish}Top{/block:Polish}{block:Portuguese}Topo{/block:Portuguese}{block:Dutch}Top{/block:Dutch}</a> <a href="http://anthagio.tumblr.com/themocracy" class="credit">{block:English}Install{/block:English}{block:German}Installieren{/block:German}{block:French}Installer{/block:French}{block:Italian}Installare{/block:Italian}{block:Japanese}インストール{/block:Japanese}{block:Turkish}Kurmak{/block:Turkish}{block:Spanish}Instalar{/block:Spanish}{block:Russian}Yстанавливать{/block:Russian}{block:Polish}Zainstalować{/block:Polish}{block:Portuguese}Instalar{/block:Portuguese}{block:Dutch}Installeren{/block:Dutch}</a> <a href="http://anthagio.tumblr.com" class="credit">Anthagio</a></div>{/block:PermalinkPage}
+
+    <div class="clear"></div>
+  </div><!-- end #posts -->
+
+  <div id="sidebar">
+    {block:PermalinkPage}
+      {block:Posts}
+        {block:Date}
+          {block:GroupMembers}
+            <div class="section">
+              <div id="group_members">
+                <div class="group_member {GroupMemberName}"><img src="{PostAuthorPortraitURL-128}" alt="member" /><div class="group_member_info"><a href="{PostAuthorURL}" title="{PostAuthorTitle}">{PostAuthorName}</a><br />{PostAuthorTitle}</div><div class="clear"></div></div>
+              </div><!-- end #group_members -->
+            </div><!-- end .section -->
+          {/block:GroupMembers}
+        {/block:Date}
+      {/block:Posts}
+    {/block:PermalinkPage}
+
+    {block:ifSidebarheaderimage}<div class="section"><img src="{image:Sidebar header}" alt="{image:Sidebar header}" /></div>{block:ifSidebarheaderimage}
+    {block:ifSidebarheaderimage}{block:HasPages}<div id="pages">{block:Pages}<a href="{URL}"><span>o</span> {Label}</a>{/block:Pages}</div>{/block:HasPages}{/block:ifSidebarheaderimage}
+
+    <div class="section">
+      <div class="title"><span>{Title}</span></div>
+      {Description}
+    </div><!-- end .section -->
+
+    {block:IfNotSidebarHeaderImage}{block:HasPages}<div id="pages">{block:Pages}<a href="{URL}"><span>o</span> {Label}</a>{/block:Pages}</div>{/block:HasPages}{/block:IfNotSidebarHeaderImage}
+
+    {block:ifExtrasidebarsectioncontentone}
+      <div class="section">
+        {block:ifExtrasidebarsectiontitleone}<div class="title"><span>{text:Extra sidebar section title one}</span></div>{/block:ifExtrasidebarsectiontitleone}
+        {text:Extra sidebar section content one}
+      </div><!-- end .section -->
+    {/block:ifExtrasidebarsectioncontentone}
+
+    {block:IfShowSearchBar}<div class="section"><!--[if IE]><div style="display: block; margin-top: -36px;"></div><div id="iesearch"><![endif]--><form action="/search" method="get"><input class="search" type="text" name="q" value="{SearchQuery}" /> <input class="submit" type="submit" value="{block:English}Search{/block:English}{block:German}Suchen{/block:German}{block:French}Recherche{/block:French}{block:Italian}Cerca{/block:Italian}{block:Japanese}検索{/block:Japanese}{block:Turkish}Arama{/block:Turkish}{block:Spanish}Buscar{/block:Spanish}{block:Russian}Поиск{/block:Russian}{block:Polish}Szukaj{/block:Polish}{block:Dutch}Zoeken{/block:Dutch}"/></form><!--[if IE]></div><![endif]--></div>{/block:IfShowSearchBar}
+
+    {block:ifExtrasidebarsectioncontenttwo}
+      <div class="section">
+        {block:ifExtrasidebarsectiontitletwo}<div class="title"><span>{text:Extra sidebar section title two}</span></div>{/block:ifExtrasidebarsectiontitletwo}
+        {text:Extra sidebar section content two}
+      </div><!-- end .section -->
+    {/block:ifExtrasidebarsectioncontenttwo}
+
+    {block:ifTwitterusername}
+      <div class="section">
+        <div class="title"><span>{text:Twitter username}'s {lang:Latest Tweets}</span></div>
+        <div id="twitter"></div>
+        <a href="http://twitter.com/{text:Twitter username}">Follow {text:Twitter username} on Twitter &rarr;</a>
+        <script type="text/javascript">$(document).ready(function() {$("#twitter").tweet({join_text: "auto", username: "{text:Twitter username}", avatar_size: 0, count: {text:Twitter tweet count}});});</script>
+      </div><!-- end .section -->
+    {/block:ifTwitterusername}
+
+    {block:ifExtrasidebarsectioncontentthree}
+      <div class="section">
+        {block:ifExtrasidebarsectiontitlethree}<div class="title"><span>{text:Extra sidebar section title three}</span></div>{/block:ifExtrasidebarsectiontitlethree}
+        {text:Extra sidebar section content three}
+      </div><!-- end .section -->
+    {/block:ifExtrasidebarsectioncontentthree}
+
+    {block:ifLastFmusername}
+      <div class="section">
+        <div class="title"><span>{block:English}Latest Last.fm scrobbles{/block:English}{block:German}Neueste Last.fm scrobbles{/block:German}{block:French}Derniers scrobbles Last.fm{/block:French}{block:Italian}Ultimi di Last.fm scrobbles{/block:Italian}{block:Japanese}最新Last.fmの決して第三者{/block:Japanese}{block:Turkish}Son Last.fm scrobbles{/block:Turkish}{block:Spanish}Últimas scrobbles de Last.fm{/block:Spanish}{block:Russian}Последние Last.fm прослушиваний{/block:Russian}{block:Polish}Najnowsze scrobbles Last.fm przejdą{/block:Polish}{block:Portuguese}Últimas scrobbles da Last.fm{/block:Portuguese}{block:Dutch}Laatste Last.fm scrobbles{/block:Dutch}</span></div>
+        <div id="lastfm"><dl><div class="lfm_song"></div></dl></div>
+        <a href="http://last.fm/user/{text:Last Fm username}">Add {text:Last Fm username} on Last Fm &rarr;</a>
+        <script type="text/javascript">$(document).ready(function(){$('#lastfm').lastFM({username: '{text:Last Fm username}', apikey: '96e0589327a3f120074f74dbc8ec6443', number: {text:Last Fm song count}, artSize: 'medium', noart: 'http://static.tumblr.com/3driglx/AeNm1i5fv/untitled-2.png', onComplete: function(){}});});</script>
+      </div><!-- end .section -->
+    {/block:ifLastFmusername}
+
+    {block:ifInstagramaccesstoken}
+      <div class="section">
+        <div class="title"><span>{block:English}Latest Instagram uploads{/block:English}{block:German}Neueste Uploads Instagram{/block:German}{block:French}Derniers ajouts Instagram{/block:French}{block:Italian}Ultimi arrivi Instagram{/block:Italian}{block:Japanese}最新のInstagramのアップロード{/block:Japanese}{block:Turkish}Son Instagram yüklenenler{/block:Turkish}{block:Spanish}Últimas cargas del Instagram{/block:Spanish}{block:Russian}Последние добавления Instagram{/block:Russian}{block:Polish}Ostatnio dodane Instagram{/block:Polish}{block:Portuguese}Últimos uploads Instagram{/block:Portuguese}{block:Dutch}Laatste Instagram upload{/block:Dutch}</span></div>
+        <div id="instagram"></div>  
+        <script type="text/javascript">$(document).ready(function(){$.ajax({type:"GET", dataType:"jsonp", cache:false, url:"https://api.instagram.com/v1/users/self/media/recent?access_token={text:Instagram access token}", success:function(a){for(var b=0;b<{text:Instagram photo count}; b++){if(a.data[b]!==undefined){$("#instagram").append("<a target='_blank' href='"+a.data[b].link+"'><img src='"+a.data[b].images.low_resolution.url+"' alt='"+a.data[b].link+"'></a>")}}}})});</script>           
+      </div><!-- end .section -->
+    {/block:ifInstagramaccesstoken}
+
+    {block:ifExtrasidebarsectioncontentfour}
+      <div class="section">
+        {block:ifExtrasidebarsectiontitlefour}<div class="title"><span>{text:Extra sidebar section title four}</span></div>{/block:ifExtrasidebarsectiontitlefour}
+        {text:Extra sidebar section content four}
+      </div><!-- end .section -->
+    {/block:ifExtrasidebarsectioncontentfour}
+
+    {block:ifFlickrIDnumber}
+      <div class="section">
+        <div class="title"><span>{block:English}Latest Flickr uploads{/block:English}{block:German}Neueste Flickr-Uploads{/block:German}{block:French}Derniers ajouts Flickr{/block:French}{block:Italian}Flickr Ultimi arrivi{/block:Italian}{block:Japanese}最新のFlickrのアップロード{/block:Japanese}{block:Turkish}Son Flickr yüklenenler{/block:Turkish}{block:Spanish}Las últimas subidas en Flickr{/block:Spanish}{block:Russian}Последние добавления Flickr{/block:Russian}{block:Polish}Ostatnio dodane Flickr{/block:Polish}{block:Portuguese}Últimos uploads Flickr{/block:Portuguese}{block:Dutch}Laatste Flickr upload{/block:Dutch}</span></div>
+        <div id="flickr"></div> 
+        <script type="text/javascript">$(document).ready(function() { var flickrLink = "link"; var flickrTitle = "title"; $('#flickr').jflickrfeed( { limit : {text:Flickr photo count}, qstrings : { id : '{text:Flickr ID number}' }, itemTemplate : '<a href="{{' + flickrLink + '}}" target="_blank"><img src="{{image_s}}" alt="{{' + flickrTitle + '}}" /></a>' } ); });</script>
+      </div><!-- end .section -->
+    {/block:ifFlickrIDnumber}
+
+    {block:Likes}
+      <div class="section">
+        <div class="title"><span>{lang:Liked posts}</span></div>
+        {Likes limit="5" width="200"}
+        <a href="http://www.tumblr.com/liked/by/{Name}">{lang:More liked posts} &rarr;</a>
+      </div><!-- end .section -->
+    {/block:Likes}
+
+    {block:ifExtrasidebarsectioncontentfive}
+      <div class="section">
+        {block:ifExtrasidebarsectiontitlefive}<div class="title"><span>{text:Extra sidebar section title five}</span></div>{/block:ifExtrasidebarsectiontitlefive}
+        {text:Extra sidebar section content five}
+      </div><!-- end .section -->
+    {/block:ifExtrasidebarsectioncontentfive}
+
+    {block:ifShowblogsIfollow}
+      {block:Following}
+        <div class="section">
+          <div class="title"><span>{lang:People I follow}</span></div>
+          <div id="following">{block:Followed}<a href="{FollowedURL}"><img src="{FollowedPortraitURL-128}" alt="{FollowedName}" title="{FollowedTitle}"/></a>{/block:Followed}</div>
+        </div><!-- end .section -->
+      {/block:Following}
+    {/block:ifShowblogsIfollow}
+
+    {block:ifExtrasidebarsectioncontentsix}
+      <div class="section">
+        {block:ifExtrasidebarsectiontitlesix}<div class="title"><span>{text:Extra sidebar section title six}</span></div>{/block:ifExtrasidebarsectiontitlesix}
+        {text:Extra sidebar section content six}
+      </div><!-- end .section -->
+    {/block:ifExtrasidebarsectioncontentsix}
+
+    {block:IndexPage}
+      {block:GroupMembers}
+        <div class="section">
+          <div class="title"><span>{lang:Contributors}</span></div>
+
+          <div id="group_members">
+            {block:GroupMember}<div class="group_member {GroupMemberName}"><img src="{GroupMemberPortraitURL-40}" alt="member" /><div class="group_member_info"><a href="{GroupMemberURL}" title="{GroupMemberTitle}">{GroupMemberName}</a><br />{GroupMemberTitle}</div><div class="clear"></div></div>{/block:GroupMember}
+          </div><!-- end #group_members -->
+        </div><!-- end .section -->
+      {/block:GroupMembers}
+    {/block:IndexPage}
+
+    {block:ifExtrasidebarsectioncontentseven}
+      <div class="section">
+        {block:ifExtrasidebarsectiontitleseven}<div class="title"><span>{text:Extra sidebar section title seven}</span></div>{/block:ifExtrasidebarsectiontitleseven}
+        {text:Extra sidebar section content seven}
+      </div><!-- end .section -->
+    {/block:ifExtrasidebarsectioncontentseven}
+  </div><!-- end #sidebar -->
+</div><!-- end #container -->
+
+{block:IndexPage}{block:ifShowshareandtweetlinks}<script language="javascript" type="text/javascript">function popitup(url) {newwindow=window.open(url,'name','height=270,width=450'); if (window.focus) {newwindow.focus()} return false;}</script>{/block:ifShowshareandtweetlinks}{/block:IndexPage}
+</body>
+</html>
