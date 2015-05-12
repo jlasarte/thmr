@@ -1,2 +1,4 @@
 # thmr
-tumblr theme paser based on thimble
+tumblr theme paser inspired by thimble
+
+[incomplete, but functional]
