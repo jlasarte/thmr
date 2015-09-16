@@ -1,15 +1,9 @@
 <?php
 
 /**
- * Pheme adapter for Tumblr syntax
+ * Pheme adapter for Tumblr syntax based on https://www.ohloh.net/p/pheme by Sandu Lungu
  *
- * @author Sandu Lungu <sandu@lungu.info>
- * @copyright 2010 Sandu Lungu
- * @filesource
- * @license http://www.gnu.org/licenses/gpl.html GPL3
- * @link https://www.ohloh.net/p/pheme
- * @package Pheme
- * @subpackage Tumblr
+ * @author jlasarte
  */
 
 require_once (dirname(__FILE__).'/parser.php');
